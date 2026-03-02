@@ -22,28 +22,28 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Marquee Text - Background Layer */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full overflow-hidden z-0 select-none opacity-30 md:opacity-40 mix-blend-color-dodge pointer-events-none text-mg-gray-light">
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full overflow-hidden z-0 select-none pointer-events-none text-mg-white">
         <motion.div
           className="flex whitespace-nowrap"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
             repeat: Infinity,
             ease: "linear",
-            duration: 8 // Faster animation speed
+            duration: 10 // Exact Matthis animation speed
           }}
         >
-          {/* Repeated text for seamless loop - using the stylish Pinyon Script font */}
+          {/* Repeated image for seamless loop */}
           <div className="flex items-center">
-            <span className="text-[35vw] md:text-[25vw] leading-none font-cursive text-neutral-300 tracking-tighter pr-12">ANKIT</span>
-            <span className="text-[35vw] md:text-[25vw] leading-none font-cursive text-neutral-300 tracking-tighter pr-12">ANKIT</span>
-            <span className="text-[35vw] md:text-[25vw] leading-none font-cursive text-neutral-300 tracking-tighter pr-12">ANKIT</span>
-            <span className="text-[35vw] md:text-[25vw] leading-none font-cursive text-neutral-300 tracking-tighter pr-12">ANKIT</span>
+            <img src="/ankit.svg" alt="Ankit" className="h-[55vw] md:h-[40vw] pr-12" />
+            <img src="/ankit.svg" alt="Ankit" className="h-[55vw] md:h-[40vw] pr-12" />
+            <img src="/ankit.svg" alt="Ankit" className="h-[55vw] md:h-[40vw] pr-12" />
+            <img src="/ankit.svg" alt="Ankit" className="h-[55vw] md:h-[40vw] pr-12" />
           </div>
           <div className="flex items-center">
-            <span className="text-[35vw] md:text-[25vw] leading-none font-cursive text-neutral-300 tracking-tighter pr-12">ANKIT</span>
-            <span className="text-[35vw] md:text-[25vw] leading-none font-cursive text-neutral-300 tracking-tighter pr-12">ANKIT</span>
-            <span className="text-[35vw] md:text-[25vw] leading-none font-cursive text-neutral-300 tracking-tighter pr-12">ANKIT</span>
-            <span className="text-[35vw] md:text-[25vw] leading-none font-cursive text-neutral-300 tracking-tighter pr-12">ANKIT</span>
+            <img src="/ankit.svg" alt="Ankit" className="h-[55vw] md:h-[40vw] pr-12" />
+            <img src="/ankit.svg" alt="Ankit" className="h-[55vw] md:h-[40vw] pr-12" />
+            <img src="/ankit.svg" alt="Ankit" className="h-[55vw] md:h-[40vw] pr-12" />
+            <img src="/ankit.svg" alt="Ankit" className="h-[55vw] md:h-[40vw] pr-12" />
           </div>
         </motion.div>
       </div>

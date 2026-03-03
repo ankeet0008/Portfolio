@@ -67,9 +67,7 @@ const App: React.FC = () => {
 
       <Noise />
 
-      {currentView === 'home' && !selectedProject && (
-        <Header onNavigate={handleNavigate} />
-      )}
+      <Header onNavigate={handleNavigate} isLoading={isLoading} />
 
       <AnimatePresence mode="wait">
         {selectedProject ? (

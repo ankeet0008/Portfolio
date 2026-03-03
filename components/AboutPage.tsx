@@ -39,18 +39,18 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onNavigateContact }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="bg-[#F5F2EB] min-h-screen text-[#2D2D2A] relative z-50 pt-24"
+      className="bg-[#f0f2f5] min-h-screen text-[#1f2937] relative z-50 pt-24"
     >
       {/* Navigation */}
-      <div className="fixed top-0 left-0 w-full px-6 py-6 md:px-12 md:py-8 flex justify-between items-center z-50 bg-[#F5F2EB]/90 backdrop-blur-md border-b border-[#DCD6CC]">
+      <div className="fixed top-0 left-0 w-full px-6 py-6 md:px-12 md:py-8 flex justify-between items-center z-50 bg-[#f0f2f5]/90 backdrop-blur-md border-b border-[#d1d5db]">
         <button
           onClick={onBack}
-          className="flex items-center gap-3 text-sm font-sora font-medium uppercase tracking-widest text-[#A89F91] hover:text-[#2D2D2A] transition-colors group"
+          className="flex items-center gap-3 text-sm font-sora font-medium uppercase tracking-widest text-[#9ca3af] hover:text-[#1f2937] transition-colors group"
         >
           <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform duration-300" />
           Back Home
         </button>
-        <span className="text-xs font-mono text-[#A89F91] uppercase hidden md:block">Personal Archive</span>
+        <span className="text-xs font-mono text-[#9ca3af] uppercase hidden md:block">Personal Archive</span>
       </div>
 
       <div className="px-6 md:px-12 pb-24 max-w-[1400px] mx-auto">
@@ -59,7 +59,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onNavigateContact }) => {
           <motion.h1
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            className="text-[12vw] leading-[0.85] font-clash font-semibold uppercase tracking-tight text-[#2D2D2A]"
+            className="text-[12vw] leading-[0.85] font-clash font-semibold uppercase tracking-tight text-[#1f2937]"
           >
             About <span className="text-[#BFA18F] italic font-serif">Me.</span>
           </motion.h1>
@@ -72,18 +72,18 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onNavigateContact }) => {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="w-full h-[60vh] bg-[#EBE7E0] rounded-2xl overflow-hidden relative"
+              className="w-full h-[60vh] bg-[#e4e7ec] rounded-2xl overflow-hidden relative"
             >
               <img src="/about-me.png" alt="Profile" className="w-full h-full object-cover grayscale transition-all duration-500 ease-in-out hover:grayscale-0" />
             </motion.div>
 
-            <div className="mt-8 flex justify-between items-end border-t border-[#DCD6CC] pt-6">
+            <div className="mt-8 flex justify-between items-end border-t border-[#d1d5db] pt-6">
               <div>
-                <span className="block text-[10px] font-sora font-bold uppercase tracking-[0.2em] text-[#A89F91] mb-2">Location</span>
+                <span className="block text-[10px] font-sora font-bold uppercase tracking-[0.2em] text-[#9ca3af] mb-2">Location</span>
                 <span className="text-lg font-clash font-medium">Odisha, India</span>
               </div>
               <div>
-                <span className="block text-[10px] font-sora font-bold uppercase tracking-[0.2em] text-[#A89F91] mb-2">Status</span>
+                <span className="block text-[10px] font-sora font-bold uppercase tracking-[0.2em] text-[#9ca3af] mb-2">Status</span>
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                   <span className="text-lg font-clash font-medium">Available</span>
@@ -100,8 +100,8 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onNavigateContact }) => {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-xs font-sora font-bold uppercase tracking-[0.2em] text-[#A89F91] mb-8">The Story</h3>
-              <p className="text-2xl md:text-4xl leading-relaxed font-light text-[#2D2D2A]">
+              <h3 className="text-xs font-sora font-bold uppercase tracking-[0.2em] text-[#9ca3af] mb-8">The Story</h3>
+              <p className="text-2xl md:text-4xl leading-relaxed font-light text-[#1f2937]">
                 I'm Ankit, a creative developer sitting at the intersection of <span className="font-serif italic text-[#BFA18F]">design</span> and <span className="font-serif italic text-[#BFA18F]">technology</span>.
                 <br /><br />
                 With a background in computer science and a passion for brutalist aesthetics, I build digital products that feel solid, performant, and distinctly human. I believe the web should be an extension of our creative minds, not just a utility.
@@ -114,15 +114,15 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onNavigateContact }) => {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-xs font-sora font-bold uppercase tracking-[0.2em] text-[#A89F91] mb-8">What I Do</h3>
+              <h3 className="text-xs font-sora font-bold uppercase tracking-[0.2em] text-[#9ca3af] mb-8">What I Do</h3>
               <div className="grid grid-cols-1 gap-6">
                 {[
                   { icon: Code2, title: "Frontend Engineering", desc: "Pixel-perfect implementation using React, Next.js, and WebGL." },
                   { icon: Cpu, title: "AI Integration", desc: "Leveraging LLMs to build intelligent, context-aware applications." },
                   { icon: Globe, title: "Interactive Design", desc: "Creating immersive web experiences with smooth motion and depth." }
                 ].map((service, i) => (
-                  <div key={i} className="flex items-start gap-6 p-6 border border-[#DCD6CC] rounded-xl hover:bg-white transition-colors duration-300">
-                    <div className="w-12 h-12 bg-[#2D2D2A] text-[#F5F2EB] rounded-full flex items-center justify-center shrink-0">
+                  <div key={i} className="flex items-start gap-6 p-6 border border-[#d1d5db] rounded-xl hover:bg-white transition-colors duration-300">
+                    <div className="w-12 h-12 bg-[#1f2937] text-[#f0f2f5] rounded-full flex items-center justify-center shrink-0">
                       <service.icon size={20} />
                     </div>
                     <div>
@@ -139,7 +139,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onNavigateContact }) => {
             {/* Footer CTA */}
             <div
               onClick={onNavigateContact}
-              className="w-full bg-[#2D2D2A] text-[#F5F2EB] py-16 px-8 rounded-2xl flex flex-col items-center text-center cursor-pointer group hover:bg-black transition-colors"
+              className="w-full bg-[#1f2937] text-[#f0f2f5] py-16 px-8 rounded-2xl flex flex-col items-center text-center cursor-pointer group hover:bg-black transition-colors"
             >
               <span className="text-xs font-sora font-bold uppercase tracking-[0.2em] text-neutral-500 mb-6">Ready to start?</span>
               <h2 className="text-5xl md:text-7xl font-clash font-semibold mb-8 group-hover:scale-105 transition-transform duration-500">

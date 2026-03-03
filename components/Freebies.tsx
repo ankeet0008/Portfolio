@@ -21,7 +21,7 @@ const Freebies: React.FC = () => {
    const containerRef = useRef<HTMLElement>(null);
 
    return (
-      <section ref={containerRef} className="bg-[#F5F2EB] relative min-h-screen pb-24">
+      <section ref={containerRef} className="bg-[#f0f2f5] relative min-h-screen pb-24">
 
          {/* Animated Header Section - Black background to transition from previous section */}
          <div className="bg-neutral-950 pt-12 pb-24 rounded-b-[3rem] md:rounded-b-[5rem] shadow-xl relative z-0">

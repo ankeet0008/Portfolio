@@ -9,20 +9,19 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Simulate loading time for the animation to play out smoothly
     const timeout = setTimeout(() => {
       setIsLoaded(true);
-    }, 2400); // Wait for the drawing to finish
+    }, 2400);
 
     return () => clearTimeout(timeout);
   }, []);
 
   useEffect(() => {
     if (isLoaded) {
-      // Delay to let the exit animation trigger and finish
+      // Wait for the slide-down exit animation to finish
       const completionTimeout = setTimeout(() => {
         onComplete();
-      }, 1200); // 1.2s to match the 'gap' split exit duration
+      }, 1200);
       return () => clearTimeout(completionTimeout);
     }
   }, [isLoaded, onComplete]);
@@ -31,25 +30,12 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     <motion.div
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-transparent cursor-wait overflow-hidden pointer-events-none"
     >
-      {/* Top Half of the Split Curtain */}
+      {/* Single full-screen curtain that slides DOWN to reveal */}
       <AnimatePresence>
         {!isLoaded && (
           <motion.div
-            key="curtain-top"
-            className="absolute top-0 left-0 w-full h-[50dvh] bg-neutral-950 z-0 pointer-events-auto"
-            initial={{ y: "0%" }}
-            exit={{ y: "-100%" }}
-            transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Bottom Half of the Split Curtain */}
-      <AnimatePresence>
-        {!isLoaded && (
-          <motion.div
-            key="curtain-bottom"
-            className="absolute bottom-0 left-0 w-full h-[50dvh] bg-neutral-950 z-0 pointer-events-auto"
+            key="curtain"
+            className="absolute inset-0 w-full h-full bg-neutral-950 z-0 pointer-events-auto"
             initial={{ y: "0%" }}
             exit={{ y: "100%" }}
             transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
@@ -63,11 +49,11 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           <motion.div
             key="preloader-content"
             initial={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 2.5, filter: "blur(10px)" }}
-            transition={{ duration: 1.0, ease: [0.76, 0, 0.24, 1] }}
+            exit={{ opacity: 0, y: 60 }}
+            transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
             className="absolute inset-0 flex flex-col items-center justify-center w-full z-10 pointer-events-none"
           >
-            {/* Logo Drawing Animation in the Center */}
+            {/* Logo Drawing Animation */}
             <div className="relative w-28 h-28 sm:w-36 sm:h-36 flex items-center justify-center">
               <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
                 {/* The "A" shape */}
@@ -99,7 +85,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 <motion.path
                   d="M 35 75 L 35 35 L 65 75 L 65 35"
                   fill="transparent"
-                  stroke="#a3a3a3" // neutral-400 equivalent for slight depth distinction
+                  stroke="#a3a3a3"
                   strokeWidth="3.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"

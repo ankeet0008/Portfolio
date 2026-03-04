@@ -99,11 +99,7 @@ const Hero: React.FC = () => {
         ))}
       </div>
 
-      {/* Top Right Status - Positioned below the main header area */}
-      <div className="absolute top-32 right-6 md:right-12 z-20 hidden md:flex items-center gap-2 px-4 py-2 border border-neutral-300 rounded-full bg-white/50 backdrop-blur-sm">
-        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
-        <span className="text-[10px] uppercase tracking-widest font-bold text-neutral-800">Open to Work</span>
-      </div>
+
 
       {/* Marquee Text - Background Layer */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full overflow-hidden z-0 select-none pointer-events-none">

@@ -16,6 +16,7 @@ import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
 import ThankYou from './components/ThankYou';
 import PageTransition from './components/PageTransition';
+
 import { Project } from './types';
 
 type ViewState = 'home' | 'about' | 'contact';
@@ -112,6 +113,7 @@ const App: React.FC = () => {
           </PageTransition>
         )}
       </AnimatePresence>
+
 
       <AIAssistant />
     </div>

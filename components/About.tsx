@@ -1,12 +1,58 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About: React.FC = () => {
-  const description = `"Ankit Naik is a passionate ML Engineer & Developer, known for his creative problem-solving and technical depth. With a drive for building intelligent, real-world applications, Ankit combines AI expertise with modern web development to bring bold ideas to life. Whether it's training models, designing LLM-powered tools, or crafting full-stack experiences, Ankit's dedication to innovation and quality shines through in every project he undertakes."`;
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const description = `Ankit Naik is a passionate ML Engineer & Developer, known for his creative problem-solving and technical depth. With a drive for building intelligent, real-world applications, Ankit combines AI expertise with modern web development to bring bold ideas to life. Whether it's training models, designing LLM-powered tools, or crafting full-stack experiences, Ankit's dedication to innovation and quality shines through in every project he undertakes.`;
+
+  useEffect(() => {
+    const el = descriptionRef.current;
+    if (!el) return;
+
+    // Split text into words and wrap each in a span
+    const words = el.textContent?.split(' ') || [];
+    el.innerHTML = '';
+    words.forEach((word, i) => {
+      const span = document.createElement('span');
+      span.textContent = word + ' ';
+      span.style.opacity = '0.15';
+      span.style.transition = 'none';
+      span.className = 'about-word';
+      el.appendChild(span);
+    });
+
+    const wordSpans = el.querySelectorAll('.about-word');
+
+    // GSAP ScrollTrigger — scrub through words as user scrolls
+    gsap.to(wordSpans, {
+      opacity: 1,
+      stagger: 0.05,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 75%',
+        end: 'bottom 40%',
+        scrub: 1,
+      },
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.trigger === el) st.kill();
+      });
+    };
+  }, []);
 
   return (
     <section
+      ref={sectionRef}
       id="about"
       className="relative bg-black text-white py-24 md:py-32 px-6 md:px-16 min-h-screen overflow-hidden"
     >
@@ -69,15 +115,14 @@ const About: React.FC = () => {
 
           {/* Description + Currently Working */}
           <div className="md:col-span-9 flex flex-col justify-center md:pl-4">
-            <motion.p
-              className="text-[15px] md:text-[17px] leading-[1.8] text-neutral-300 font-light max-w-[640px] mb-10"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            {/* Scroll-linked text reveal */}
+            <p
+              ref={descriptionRef}
+              className="text-xl md:text-2xl lg:text-3xl leading-[1.6] text-white font-light max-w-[740px] mb-10"
+              style={{ fontFamily: "'Inter', sans-serif" }}
             >
               {description}
-            </motion.p>
+            </p>
 
             <motion.div
               className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-neutral-500 font-medium"

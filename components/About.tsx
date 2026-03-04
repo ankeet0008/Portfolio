@@ -15,7 +15,7 @@ const About: React.FC = () => {
         className="absolute top-10 right-8 md:right-16 text-neutral-500 text-sm font-clash tracking-wider"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
         02/05
@@ -24,7 +24,7 @@ const About: React.FC = () => {
       <div className="w-full max-w-[1400px] mx-auto">
         {/* Giant /ABOUT Title — spans left to ~middle of screen */}
         <h2
-          className="font-clash font-extrabold text-white uppercase select-none flex"
+          className="font-oswald font-bold text-white uppercase select-none flex"
           style={{
             fontSize: 'clamp(120px, 22vw, 360px)',
             lineHeight: '0.88',
@@ -37,7 +37,7 @@ const About: React.FC = () => {
               className={i === 0 ? 'text-neutral-500 font-light' : ''}
               initial={{ x: 120, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{
                 duration: 0.5,
                 delay: i * 0.1,
@@ -57,11 +57,11 @@ const About: React.FC = () => {
             className="md:col-span-3 flex items-start justify-start"
             initial={{ opacity: 0, x: -60, rotate: -15 }}
             whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <ArrowUpRight
-              size={200}
+              size={380}
               strokeWidth={1.2}
               className="text-neutral-600"
             />
@@ -73,7 +73,7 @@ const About: React.FC = () => {
               className="text-[15px] md:text-[17px] leading-[1.8] text-neutral-300 font-light max-w-[640px] mb-10"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             >
               {description}
@@ -83,7 +83,7 @@ const About: React.FC = () => {
               className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-neutral-500 font-medium"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.5, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
               Currently building AI-powered tools as a Freelance ML Engineer

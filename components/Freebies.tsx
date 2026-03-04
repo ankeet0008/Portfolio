@@ -60,7 +60,7 @@ const Freebies: React.FC = () => {
             <motion.div
                initial="hidden"
                whileInView="show"
-               viewport={{ once: true, margin: "-100px" }}
+               viewport={{ once: false, margin: "-100px" }}
                className="grid grid-cols-6 gap-2"
             >
 

@@ -3,9 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 interface PreloaderProps {
   onComplete: () => void;
+  onCurtainStart?: () => void;
 }
 
-const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
+const Preloader: React.FC<PreloaderProps> = ({ onComplete, onCurtainStart }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -18,13 +19,15 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
 
   useEffect(() => {
     if (isLoaded) {
+      // Notify parent that curtain slide has started
+      onCurtainStart?.();
       // Wait for the slide-down exit animation to finish
       const completionTimeout = setTimeout(() => {
         onComplete();
       }, 1200);
       return () => clearTimeout(completionTimeout);
     }
-  }, [isLoaded, onComplete]);
+  }, [isLoaded, onComplete, onCurtainStart]);
 
   return (
     <motion.div

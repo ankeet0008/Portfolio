@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useLenis } from './utils/useLenis';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -15,12 +15,14 @@ import ProjectDetail from './components/ProjectDetail';
 import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
 import ThankYou from './components/ThankYou';
+import PageTransition from './components/PageTransition';
 import { Project } from './types';
 
 type ViewState = 'home' | 'about' | 'contact';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [curtainStarted, setCurtainStarted] = useState(false);
   const [currentView, setCurrentView] = useState<ViewState>('home');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -55,6 +57,7 @@ const App: React.FC = () => {
     } else {
       setCurrentView(view);
       setSelectedProject(null);
+      window.scrollTo(0, 0);
     }
   };
 
@@ -62,12 +65,17 @@ const App: React.FC = () => {
     <div className="bg-neutral-950 min-h-screen text-white selection:bg-white selection:text-black">
       {/* Preloader sits on top of everything */}
       <AnimatePresence>
-        {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+        {isLoading && (
+          <Preloader
+            onComplete={() => setIsLoading(false)}
+            onCurtainStart={() => setCurtainStarted(true)}
+          />
+        )}
       </AnimatePresence>
 
       <Noise />
 
-      <Header onNavigate={handleNavigate} isLoading={isLoading} />
+      <Header onNavigate={handleNavigate} isLoading={isLoading} curtainStarted={curtainStarted} />
 
       <AnimatePresence mode="wait">
         {selectedProject ? (
@@ -89,17 +97,19 @@ const App: React.FC = () => {
             onBack={() => setCurrentView('home')}
           />
         ) : (
-          <main key="home-content">
-            <Hero />
-            <div className="relative z-10 bg-neutral-950 mt-[100vh] shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
-              <About />
-              <SuperBadassMarquee />
-              <SelectedWork onProjectSelect={setSelectedProject} />
-              <Freebies />
-              <ThankYou />
-              <Contact />
-            </div>
-          </main>
+          <PageTransition key="home-content" className="">
+            <main>
+              <Hero />
+              <div className="relative z-10 bg-neutral-950 mt-[100vh] shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
+                <About />
+                <SuperBadassMarquee />
+                <SelectedWork onProjectSelect={setSelectedProject} />
+                <Freebies />
+                <ThankYou />
+                <Contact />
+              </div>
+            </main>
+          </PageTransition>
         )}
       </AnimatePresence>
 

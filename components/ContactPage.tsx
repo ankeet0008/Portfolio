@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Copy, Check, Mail, ArrowUpRight, MapPin, Clock } from 'lucide-react';
+import PageTransition from './PageTransition';
 
 interface ContactPageProps {
   onBack: () => void;
@@ -39,10 +40,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ onBack }) => {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+    <PageTransition
       className="bg-white min-h-screen text-black relative z-50 pt-24"
     >
       {/* Navigation */}
@@ -129,7 +127,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ onBack }) => {
         </motion.div>
 
       </div>
-    </motion.div>
+    </PageTransition>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Code2, Cpu, Globe, ArrowUpRight } from 'lucide-react';
+import PageTransition from './PageTransition';
 
 interface AboutPageProps {
   onBack: () => void;
@@ -35,10 +36,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onNavigateContact }) => {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+    <PageTransition
       className="bg-[#f0f2f5] min-h-screen text-[#1f2937] relative z-50 pt-24"
     >
       {/* Navigation */}
@@ -153,7 +151,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onNavigateContact }) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </PageTransition>
   );
 };
 

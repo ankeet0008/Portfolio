@@ -5,16 +5,17 @@ import { Menu, X } from 'lucide-react';
 interface HeaderProps {
   onNavigate: (view: 'home' | 'about' | 'contact' | 'work') => void;
   isLoading?: boolean;
+  curtainStarted?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ onNavigate, isLoading = false }) => {
+const Header: React.FC<HeaderProps> = ({ onNavigate, isLoading = false, curtainStarted = false }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   return (
     <motion.header
       initial={{ opacity: 0, y: -100 }}
-      animate={isLoading ? { opacity: 0, y: -100 } : { opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: isLoading ? 0 : 2.1, ease: [0.16, 1, 0.3, 1] }}
+      animate={curtainStarted || !isLoading ? { opacity: 1, y: 0 } : { opacity: 0, y: -100 }}
+      transition={{ duration: 0.8, delay: curtainStarted && isLoading ? 0.15 : 0, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 left-0 w-full z-[100] px-4 md:px-6 pt-4"
     >
       {/* Main Navbar — full-width rectangle */}
@@ -35,10 +36,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, isLoading = false }) => {
               <span key={word} className="overflow-hidden inline-flex">
                 <motion.span
                   initial={{ y: '-100%', opacity: 0 }}
-                  animate={isLoading ? { y: '-100%', opacity: 0 } : { y: '0%', opacity: 1 }}
+                  animate={curtainStarted || !isLoading ? { y: '0%', opacity: 1 } : { y: '-100%', opacity: 0 }}
                   transition={{
                     duration: 0.45,
-                    delay: isLoading ? 0 : 3.2 + i * 0.08,
+                    delay: curtainStarted && isLoading ? 0.6 + i * 0.08 : i * 0.08,
                     ease: [0.16, 1, 0.3, 1],
                   }}
                   className={word === 'Ankit' ? 'font-bold' : ''}

@@ -94,24 +94,8 @@ const Contact: React.FC = () => {
         </div>
       </div>
 
+      {/* Footer Bottom */}
       <div className="mt-24 border-t border-neutral-200 pt-8 flex flex-col md:flex-row justify-between items-end md:items-center gap-4">
-        <div className="flex gap-4 mb-4 md:mb-0">
-          <a
-            href="/AnkitNaikresume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-black border border-black px-4 py-2 hover:bg-black hover:text-white transition-colors"
-          >
-            View Resume
-          </a>
-          <a
-            href="/AnkitNaikresume.pdf"
-            download
-            className="text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-white bg-black border border-black px-4 py-2 hover:bg-neutral-800 transition-colors"
-          >
-            Download
-          </a>
-        </div>
         <div className="text-[10px] uppercase tracking-widest text-neutral-500 font-sora font-semibold flex flex-col md:flex-row gap-4">
           <span>© {new Date().getFullYear()} Ankit Naik. All Right Reserved.</span>
           <span className="hidden md:block text-neutral-300">|</span>

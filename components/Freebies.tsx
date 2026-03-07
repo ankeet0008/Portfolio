@@ -113,53 +113,18 @@ const Freebies: React.FC = () => {
                   </div>
                </ScrollRevealedBox>
 
-               {/* Box 2: Purple (AI Experiments) - Span 3 */}
-               <ScrollRevealedBox delay={0.2} className="col-span-3 bg-[#7C3AED] p-6 md:p-10 min-h-[50vh] flex flex-col justify-between text-white">
-                  <div className="flex justify-between items-start z-10">
-                     <h3 className="text-lg md:text-2xl font-bold font-clash uppercase tracking-tight flex items-center gap-2">
-                        AI Experiments <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                     </h3>
-                  </div>
-
-                  {/* Middle Content - Text Ideas */}
-                  <div className="flex flex-col gap-3 z-10 my-6">
-                     {[
-                        "Breaking models for fun",
-                        "Building weird AI tools at 2AM",
-                        "Turning curiosity into code"
-                     ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-3">
-                           <span className="w-2 h-2 bg-white/50 rounded-full shrink-0" />
-                           <span className="text-lg md:text-xl font-sora font-medium leading-tight opacity-90">{item}</span>
-                        </div>
-                     ))}
-                  </div>
-
-                  {/* Background Decoration */}
-                  <div className="absolute -right-10 top-1/2 -translate-y-1/2 opacity-10 rotate-12 group-hover:rotate-0 group-hover:opacity-20 transition-all duration-700 pointer-events-none">
-                     <Bot size={250} />
-                  </div>
-
-                  <div className="flex items-center gap-4 z-10">
-                     <div className="bg-white rounded-xl p-1 md:p-2 group-hover:-rotate-12 transition-transform duration-300 text-[#7C3AED]">
-                        <Bot size={32} className="md:w-10 md:h-10" />
-                     </div>
-                     <span className="text-4xl md:text-6xl font-bold font-clash tracking-tight group-hover:tracking-normal transition-all duration-300">AI Tinkerer.</span>
-                  </div>
-               </ScrollRevealedBox>
-
-               {/* Box 3: Orange (Weekend Chef) - Span 2 */}
-               <ScrollRevealedBox delay={0.3} className="col-span-2 bg-[#FF9F0A] p-6 md:p-8 min-h-[50vh] flex flex-col justify-between text-black">
+               {/* Box 2: Orange (Weekend Chef) - Span 3 */}
+               <ScrollRevealedBox delay={0.2} className="col-span-3 bg-[#FF9F0A] p-6 md:p-10 min-h-[50vh] flex flex-col justify-between text-black">
                   <div className="z-10">
-                     <h3 className="text-lg md:text-xl font-bold font-clash uppercase tracking-tight flex items-center gap-2 mb-4">
+                     <h3 className="text-lg md:text-2xl font-bold font-clash uppercase tracking-tight flex items-center gap-2 mb-4">
                         Debugging life with recipes <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                      </h3>
 
                      <div className="flex flex-col gap-2 opacity-90">
-                        <span className="text-xs md:text-sm font-sora font-medium flex items-center gap-2">
+                        <span className="text-sm md:text-lg font-sora font-medium flex items-center gap-3">
                            <span className="w-1.5 h-1.5 bg-black rounded-full" /> Code by day, cook by night
                         </span>
-                        <span className="text-xs md:text-sm font-sora font-medium flex items-center gap-2">
+                        <span className="text-sm md:text-lg font-sora font-medium flex items-center gap-3">
                            <span className="w-1.5 h-1.5 bg-black rounded-full" /> Building flavors like systems
                         </span>
                      </div>
@@ -171,10 +136,44 @@ const Freebies: React.FC = () => {
                   </div>
 
                   <div className="flex items-center gap-3 z-10 mt-8 md:mt-auto">
-                     <div className="bg-black text-[#FF9F0A] p-2 rounded-lg group-hover:rotate-12 transition-transform duration-300">
-                        <ChefHat size={24} />
+                     <div className="bg-black text-[#FF9F0A] p-2 md:p-3 rounded-lg group-hover:rotate-12 transition-transform duration-300">
+                        <ChefHat className="w-6 h-6 md:w-8 md:h-8" />
                      </div>
-                     <span className="text-2xl md:text-3xl font-bold font-clash tracking-tight group-hover:tracking-normal transition-all duration-300">Weekend Chef.</span>
+                     <span className="text-4xl md:text-6xl font-bold font-clash tracking-tight group-hover:tracking-normal transition-all duration-300">Weekend Chef.</span>
+                  </div>
+               </ScrollRevealedBox>
+
+               {/* Box 3: Purple (AI Experiments) - Span 2 */}
+               <ScrollRevealedBox delay={0.3} className="col-span-2 bg-[#7C3AED] p-6 md:p-8 min-h-[50vh] flex flex-col justify-between text-white">
+                  <div className="flex justify-between items-start z-10">
+                     <h3 className="text-lg md:text-xl font-bold font-clash uppercase tracking-tight flex items-center gap-2">
+                        AI Experiments <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                     </h3>
+                  </div>
+
+                  {/* Middle Content - Text Ideas */}
+                  <div className="flex flex-col gap-2 z-10 my-4 opacity-90">
+                     <span className="text-xs md:text-sm font-sora font-medium flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-white rounded-full shrink-0" /> Breaking models for fun
+                     </span>
+                     <span className="text-xs md:text-sm font-sora font-medium flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-white rounded-full shrink-0" /> Weird AI tools at 2AM
+                     </span>
+                     <span className="text-xs md:text-sm font-sora font-medium flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-white rounded-full shrink-0" /> Curiosity into code
+                     </span>
+                  </div>
+
+                  {/* Background Decoration */}
+                  <div className="absolute -right-10 top-1/2 -translate-y-1/2 opacity-10 rotate-12 group-hover:rotate-0 group-hover:opacity-20 transition-all duration-700 pointer-events-none">
+                     <Bot size={250} />
+                  </div>
+
+                  <div className="flex items-center gap-3 z-10 mt-8 md:mt-auto">
+                     <div className="bg-white rounded-lg p-2 group-hover:-rotate-12 transition-transform duration-300 text-[#7C3AED]">
+                        <Bot size={24} />
+                     </div>
+                     <span className="text-2xl md:text-3xl font-bold font-clash tracking-tight group-hover:tracking-normal transition-all duration-300">AI Tinkerer.</span>
                   </div>
                </ScrollRevealedBox>
 

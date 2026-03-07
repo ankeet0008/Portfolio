@@ -49,7 +49,7 @@ const App: React.FC = () => {
         setTimeout(() => {
           const workSection = document.getElementById('work');
           if (workSection) workSection.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
+        }, 800);
       } else {
         const workSection = document.getElementById('work');
         if (workSection) workSection.scrollIntoView({ behavior: 'smooth' });

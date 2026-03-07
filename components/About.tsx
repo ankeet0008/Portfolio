@@ -133,30 +133,6 @@ const About: React.FC = () => {
             >
               Currently building AI-powered tools as a Freelance ML Engineer
             </motion.div>
-
-            <motion.div
-              className="mt-8 flex gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.5, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <a
-                href="/AnkitNaikresume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs uppercase tracking-[0.2em] font-bold text-white border border-neutral-600 px-6 py-3 hover:bg-white hover:text-black transition-colors"
-              >
-                View Resume
-              </a>
-              <a
-                href="/AnkitNaikresume.pdf"
-                download
-                className="text-xs uppercase tracking-[0.2em] font-bold text-black bg-white border border-white px-6 py-3 hover:bg-neutral-200 transition-colors"
-              >
-                Download
-              </a>
-            </motion.div>
           </div>
         </div>
       </div>

@@ -226,12 +226,15 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, isLoading = false, curtainS
 
           {/* ── Right: Vertical Nav Links (Desktop) — Kraken-style ── */}
           <nav className="hidden md:flex flex-col items-end pointer-events-auto" style={{ gap: '0px' }}>
-            {[
-              { label: 'Home', view: 'home' as const, delay: 0 },
-              { label: 'About', view: 'about' as const, delay: 0.06 },
-              { label: 'Work', view: 'work' as const, delay: 0.12 },
-              { label: 'Contact', view: 'contact' as const, delay: 0.18 },
-            ].map((item) => (
+            {(
+              [
+                { label: 'Home', view: 'home', delay: 0 },
+                { label: 'About', view: 'about', delay: 0.06 },
+                { label: 'Work', view: 'work', delay: 0.12 },
+                { label: 'Contact', view: 'contact', delay: 0.18 },
+                { label: 'Resume', href: '/AnkitNaikresume.pdf', delay: 0.24 },
+              ] as any[]
+            ).map((item) => (
               <motion.div
                 key={item.label}
                 initial={{ opacity: 0, x: 30 }}
@@ -245,7 +248,11 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, isLoading = false, curtainS
                 <ScrambleNavLink
                   label={item.label}
                   onClick={() => {
-                    onNavigate(item.view);
+                    if (item.href) {
+                      window.open(item.href, '_blank', 'noopener,noreferrer');
+                    } else if (item.view) {
+                      onNavigate(item.view);
+                    }
                   }}
                 />
               </motion.div>
@@ -278,20 +285,27 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, isLoading = false, curtainS
             <X size={28} />
           </button>
           <nav className="flex flex-col items-center gap-8">
-            {[
-              { label: 'Home', view: 'home' as const },
-              { label: 'About', view: 'about' as const },
-              { label: 'Work', view: 'work' as const },
-              { label: 'Contact', view: 'contact' as const },
-            ].map((item, i) => (
+            {(
+              [
+                { label: 'Home', view: 'home' },
+                { label: 'About', view: 'about' },
+                { label: 'Work', view: 'work' },
+                { label: 'Contact', view: 'contact' },
+                { label: 'Resume', href: '/AnkitNaikresume.pdf' },
+              ] as any[]
+            ).map((item, i) => (
               <motion.button
                 key={item.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                 onClick={() => {
-                  onNavigate(item.view);
-                  setMobileMenuOpen(false);
+                  if (item.href) {
+                    window.open(item.href, '_blank', 'noopener,noreferrer');
+                  } else if (item.view) {
+                    onNavigate(item.view);
+                    setMobileMenuOpen(false);
+                  }
                 }}
                 className="text-2xl font-clash font-semibold uppercase tracking-[0.2em] text-white hover:text-neutral-400 transition-colors"
               >

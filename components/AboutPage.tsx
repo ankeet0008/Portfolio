@@ -39,11 +39,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onNavigateContact }) => {
     <PageTransition
       className="bg-[#f0f2f5] min-h-screen text-[#1f2937] relative z-50 pt-24"
     >
-      {/* Navigation */}
-      <div className="fixed top-0 left-0 w-full px-6 py-6 md:px-12 md:py-8 flex justify-between items-center z-50 bg-[#f0f2f5]/90 backdrop-blur-md border-b border-[#d1d5db]">
-        <div />
-        <span className="text-xs font-mono text-[#9ca3af] uppercase hidden md:block">Personal Archive</span>
-      </div>
+
 
       <div className="px-6 md:px-12 pb-24 max-w-[1400px] mx-auto">
         {/* Header */}

@@ -58,7 +58,10 @@ const App: React.FC = () => {
     } else {
       setCurrentView(view);
       setSelectedProject(null);
-      window.scrollTo(0, 0);
+      // Delay scroll to top until after the exit animation curtains have closed
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 600);
     }
   };
 
@@ -98,7 +101,7 @@ const App: React.FC = () => {
             onBack={() => setCurrentView('home')}
           />
         ) : (
-          <PageTransition key="home-content" className="">
+          <PageTransition key="home-content" className="bg-[#f0f2f5]">
             <main>
               <Hero />
               <div className="relative z-10 bg-neutral-950 mt-[100vh] shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">

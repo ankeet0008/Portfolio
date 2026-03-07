@@ -142,10 +142,27 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        <div className="overflow-hidden hidden md:block">
-          <span className="block text-[10px] uppercase tracking-[0.2em] font-bold text-neutral-500 group-hover:text-neutral-800 transition-all duration-300">
+        <div className="overflow-hidden hidden md:block group-hover:hidden">
+          <span className="block text-[10px] uppercase tracking-[0.2em] font-bold text-neutral-500 transition-all duration-300">
             Scroll Down
           </span>
+        </div>
+        <div className="hidden md:flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute left-[50px]">
+          <a
+            href="/AnkitNaikresume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[10px] uppercase tracking-[0.2em] font-bold text-neutral-800 bg-white/50 backdrop-blur-sm border border-neutral-300 px-3 py-2 rounded-full hover:bg-white transition-colors whitespace-nowrap"
+          >
+            View Resume
+          </a>
+          <a
+            href="/AnkitNaikresume.pdf"
+            download
+            className="text-[10px] uppercase tracking-[0.2em] font-bold text-white bg-neutral-900 border border-neutral-900 px-3 py-2 rounded-full hover:bg-black transition-colors whitespace-nowrap"
+          >
+            Download
+          </a>
         </div>
       </div>
 

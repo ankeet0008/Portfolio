@@ -45,13 +45,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ onBack }) => {
     >
       {/* Navigation */}
       <div className="fixed top-0 left-0 w-full px-6 py-6 md:px-12 md:py-8 flex justify-between items-center z-50 bg-white/90 backdrop-blur-md border-b border-neutral-100">
-        <button
-          onClick={onBack}
-          className="flex items-center gap-3 text-sm font-sora font-medium uppercase tracking-widest text-neutral-400 hover:text-black transition-colors group"
-        >
-          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform duration-300" />
-          Back Home
-        </button>
+        <div />
         <div className="hidden md:flex items-center gap-2">
           <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
           <span className="text-xs font-mono text-neutral-500 uppercase">Open for new projects</span>

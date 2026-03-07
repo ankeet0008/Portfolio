@@ -41,13 +41,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onNavigateContact }) => {
     >
       {/* Navigation */}
       <div className="fixed top-0 left-0 w-full px-6 py-6 md:px-12 md:py-8 flex justify-between items-center z-50 bg-[#f0f2f5]/90 backdrop-blur-md border-b border-[#d1d5db]">
-        <button
-          onClick={onBack}
-          className="flex items-center gap-3 text-sm font-sora font-medium uppercase tracking-widest text-[#9ca3af] hover:text-[#1f2937] transition-colors group"
-        >
-          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform duration-300" />
-          Back Home
-        </button>
+        <div />
         <span className="text-xs font-mono text-[#9ca3af] uppercase hidden md:block">Personal Archive</span>
       </div>
 

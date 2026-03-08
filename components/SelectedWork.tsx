@@ -128,7 +128,9 @@ const SelectedWork: React.FC<SelectedWorkProps> = ({ onProjectSelect }) => {
               <div className="flex flex-col gap-1 text-sm font-clash font-medium text-neutral-300">
                 <span>No code development</span>
                 <span>UI design</span>
-                <span>UX research</span>
+                <span>Python</span>
+                <span>Scikit-Learn</span>
+                <span>Deep Learning</span>
                 <span>Art Direction</span>
               </div>
             </div>

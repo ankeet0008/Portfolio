@@ -1,13 +1,25 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { ArrowUpRight, Music, Bot, ChefHat, Rocket, Terminal } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const ScrollRevealedBox = ({ children, className, delay = 0 }: { children: React.ReactNode, className: string, delay?: number }) => {
+   const [isMobile, setIsMobile] = useState(false);
+
+   useEffect(() => {
+      const checkMobile = () => setIsMobile(window.innerWidth < 768);
+      checkMobile();
+      window.addEventListener('resize', checkMobile);
+      return () => window.removeEventListener('resize', checkMobile);
+   }, []);
+
    return (
       <motion.div
+         initial="hidden"
+         whileInView="show"
+         viewport={{ once: false, margin: isMobile ? "-20px" : "-100px" }}
          variants={{
             hidden: { clipPath: "inset(0% 100% 0% 0%)", scale: 0.9 },
-            show: { clipPath: "inset(0% 0% 0% 0%)", scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay } }
+            show: { clipPath: "inset(0% 0% 0% 0%)", scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: isMobile ? 0.1 : delay } }
          }}
          whileHover={{ scale: 0.98, zIndex: 10, transition: { duration: 0.3 } }}
          className={`relative group overflow-hidden cursor-default ${className}`}
@@ -57,15 +69,10 @@ const Freebies: React.FC = () => {
 
          {/* Foreground Content - Cards Section on Warm White */}
          <div className="relative z-10 w-full -mt-12 md:-mt-16">
-            <motion.div
-               initial="hidden"
-               whileInView="show"
-               viewport={{ once: false, margin: "-100px" }}
-               className="grid grid-cols-6 gap-2"
-            >
+            <div className="grid grid-cols-1 md:grid-cols-6 gap-2 px-2 md:px-4">
 
                {/* Box 1: Spotify Green (Music) - Span 3 */}
-               <ScrollRevealedBox delay={0.1} className="col-span-3 bg-[#1DB954] p-6 md:p-10 min-h-[50vh] flex flex-col justify-between text-black">
+               <ScrollRevealedBox delay={0.1} className="col-span-1 md:col-span-3 bg-[#1DB954] p-6 md:p-10 min-h-[40vh] md:min-h-[50vh] flex flex-col justify-between text-black">
                   <div className="flex justify-between items-start z-10">
                      <h3 className="text-lg md:text-2xl font-bold font-clash uppercase tracking-tight flex items-center gap-2">
                         Coding with soundtracks on loop <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -114,7 +121,7 @@ const Freebies: React.FC = () => {
                </ScrollRevealedBox>
 
                {/* Box 2: Orange (Weekend Chef) - Span 3 */}
-               <ScrollRevealedBox delay={0.2} className="col-span-3 bg-[#FF9F0A] p-6 md:p-10 min-h-[50vh] flex flex-col justify-between text-black">
+               <ScrollRevealedBox delay={0.2} className="col-span-1 md:col-span-3 bg-[#FF9F0A] p-6 md:p-10 min-h-[40vh] md:min-h-[50vh] flex flex-col justify-between text-black">
                   <div className="z-10">
                      <h3 className="text-lg md:text-2xl font-bold font-clash uppercase tracking-tight flex items-center gap-2 mb-4">
                         Debugging life with recipes <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -144,7 +151,7 @@ const Freebies: React.FC = () => {
                </ScrollRevealedBox>
 
                {/* Box 3: Purple (AI Experiments) - Span 2 */}
-               <ScrollRevealedBox delay={0.3} className="col-span-2 bg-[#7C3AED] p-6 md:p-8 min-h-[50vh] flex flex-col justify-between text-white">
+               <ScrollRevealedBox delay={0.3} className="col-span-1 md:col-span-2 bg-[#7C3AED] p-6 md:p-8 min-h-[40vh] md:min-h-[50vh] flex flex-col justify-between text-white">
                   <div className="flex justify-between items-start z-10">
                      <h3 className="text-lg md:text-xl font-bold font-clash uppercase tracking-tight flex items-center gap-2">
                         AI Experiments <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -178,7 +185,7 @@ const Freebies: React.FC = () => {
                </ScrollRevealedBox>
 
                {/* Box 4: Cyan (Curiosity Driven) - Span 2 */}
-               <ScrollRevealedBox delay={0.4} className="col-span-2 bg-[#06B6D4] p-6 md:p-8 min-h-[50vh] flex flex-col justify-between text-black">
+               <ScrollRevealedBox delay={0.4} className="col-span-1 md:col-span-2 bg-[#06B6D4] p-6 md:p-8 min-h-[40vh] md:min-h-[50vh] flex flex-col justify-between text-black">
                   <div className="z-10">
                      <h3 className="text-lg md:text-xl font-bold font-clash uppercase tracking-tight flex items-center gap-2 mb-4">
                         Always exploring what’s next <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -208,7 +215,7 @@ const Freebies: React.FC = () => {
                </ScrollRevealedBox>
 
                {/* Box 5: Indigo (AI Builder) - Span 2 */}
-               <ScrollRevealedBox delay={0.5} className="col-span-2 bg-[#4F46E5] p-6 md:p-8 min-h-[50vh] flex flex-col justify-between text-white">
+               <ScrollRevealedBox delay={0.5} className="col-span-1 md:col-span-2 bg-[#4F46E5] p-6 md:p-8 min-h-[40vh] md:min-h-[50vh] flex flex-col justify-between text-white">
                   <div className="z-10">
                      <h3 className="text-lg md:text-xl font-bold font-clash uppercase tracking-tight flex items-center gap-2 mb-4">
                         AI Tools Playground <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -237,7 +244,7 @@ const Freebies: React.FC = () => {
                   </div>
                </ScrollRevealedBox>
 
-            </motion.div>
+            </div>
          </div>
       </section>
    );

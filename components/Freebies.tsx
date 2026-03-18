@@ -1,8 +1,49 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { ArrowUpRight, Music, Bot, ChefHat, Rocket, Terminal } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { Music, Bot, ChefHat, Rocket, Zap } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const ScrollRevealedBox = ({ children, className, delay = 0 }: { children: React.ReactNode, className: string, delay?: number }) => {
+const interests = [
+  {
+    id: 1,
+    title: "Soundscapes",
+    subtitle: "Coding with soundtracks on loop",
+    description: "Lo-fi to build, synthwave to ship. Music is the fuel for my flow state.",
+    icon: <Music size={32} />,
+    color: "#1DB954",
+    bgImage: "radial-gradient(circle at 60% 50%, rgba(29, 185, 84, 0.15) 0%, rgba(0,0,0,0) 60%)"
+  },
+  {
+    id: 2,
+    title: "Culinary Arts",
+    subtitle: "Debugging life with recipes",
+    description: "Code by day, cook by night. Building complex flavor profiles just like crafting scalable systems.",
+    icon: <ChefHat size={32} />,
+    color: "#FF9F0A",
+    bgImage: "radial-gradient(circle at 60% 50%, rgba(255, 159, 10, 0.15) 0%, rgba(0,0,0,0) 60%)"
+  },
+  {
+    id: 3,
+    title: "AI & Innovation",
+    subtitle: "Tinkering beyond limits",
+    description: "Breaking models for fun, exploring weird AI tools at 2AM, and turning curiosity into code.",
+    icon: <Bot size={32} />,
+    color: "#7C3AED",
+    bgImage: "radial-gradient(circle at 60% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(0,0,0,0) 60%)"
+  },
+  {
+    id: 4,
+    title: "Future Tech",
+    subtitle: "Obsessed with what's next",
+    description: "Learning incredibly fast, building even faster. Constantly exploring the bleeding edge of the web.",
+    icon: <Rocket size={32} />,
+    color: "#06B6D4",
+    bgImage: "radial-gradient(circle at 60% 50%, rgba(6, 182, 212, 0.15) 0%, rgba(0,0,0,0) 60%)"
+  }
+];
+
+const Freebies: React.FC = () => {
+   const containerRef = useRef<HTMLElement>(null);
+   const [activeItem, setActiveItem] = useState<number>(1);
    const [isMobile, setIsMobile] = useState(false);
 
    useEffect(() => {
@@ -13,52 +54,27 @@ const ScrollRevealedBox = ({ children, className, delay = 0 }: { children: React
    }, []);
 
    return (
-      <motion.div
-         initial="hidden"
-         whileInView="show"
-         viewport={{ once: false, margin: isMobile ? "-20px" : "-100px" }}
-         variants={{
-            hidden: { clipPath: "inset(0% 100% 0% 0%)", scale: 0.9 },
-            show: { clipPath: "inset(0% 0% 0% 0%)", scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: isMobile ? 0.1 : delay } }
-         }}
-         whileHover={{ scale: 0.98, zIndex: 10, transition: { duration: 0.3 } }}
-         className={`relative group overflow-hidden cursor-default ${className}`}
-      >
-         {children}
-      </motion.div>
-   );
-};
-
-const Freebies: React.FC = () => {
-   const containerRef = useRef<HTMLElement>(null);
-
-   return (
-      <section ref={containerRef} className="bg-[#f0f2f5] relative min-h-screen pb-24">
-
-         {/* Animated Header Section - Black background to transition from previous section */}
-         <div className="bg-neutral-950 pt-12 pb-24 rounded-b-[3rem] md:rounded-b-[5rem] shadow-xl relative z-0">
+      <section ref={containerRef} className="bg-[#050505] relative min-h-screen pb-24 text-white overflow-hidden">
+         {/* Animated Header Section */}
+         <div className="bg-[#0a0a0a] pt-12 pb-24 rounded-b-[3rem] md:rounded-b-[5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] relative z-10 border-b border-white/5">
             <motion.div
                initial={{ clipPath: "inset(45% 0 45% 0)" }}
                whileInView={{ clipPath: "inset(0% 0 0% 0)" }}
                viewport={{ once: false, margin: "-10%" }}
                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-               className="w-full bg-neutral-900 border-y border-neutral-800 py-6 md:py-10 relative flex overflow-hidden"
+               className="w-full bg-[#111] border-y border-white/10 py-6 md:py-10 relative flex overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]"
             >
                <motion.div
                   className="flex whitespace-nowrap min-w-full items-center"
                   initial={{ x: "0%" }}
                   animate={{ x: "-50%" }}
-                  transition={{
-                     repeat: Infinity,
-                     ease: "linear",
-                     duration: 20,
-                  }}
+                  transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
                >
                   {[...Array(2)].map((_, setIndex) => (
                      <div key={setIndex} className="flex shrink-0 items-center justify-around min-w-full">
                         {[...Array(4)].map((_, i) => (
-                           <span key={i} className="text-6xl md:text-9xl font-black font-clash uppercase tracking-tighter text-white px-12 opacity-90">
-                              INTERESTS ⚡
+                           <span key={i} className="text-6xl md:text-9xl font-black font-clash uppercase tracking-tighter text-white/90 px-12 flex items-center gap-8">
+                              PASSIONS <Zap className="w-12 h-12 md:w-20 md:h-20 text-yellow-400" />
                            </span>
                         ))}
                      </div>
@@ -67,183 +83,102 @@ const Freebies: React.FC = () => {
             </motion.div>
          </div>
 
-         {/* Foreground Content - Cards Section on Warm White */}
-         <div className="relative z-10 w-full -mt-12 md:-mt-16">
-            <div className="grid grid-cols-1 md:grid-cols-6 gap-2 px-2 md:px-4">
+         {/* Accordion Container */}
+         <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-8 mt-16 md:mt-24">
+            <div className="flex flex-col md:flex-row gap-4 h-[75vh] md:h-[65vh]">
+               {interests.map((item) => {
+                  const isActive = activeItem === item.id;
+                  
+                  return (
+                     <motion.div
+                        key={item.id}
+                        onMouseEnter={() => !isMobile && setActiveItem(item.id)}
+                        onClick={() => isMobile && setActiveItem(item.id)}
+                        animate={{
+                           flex: isActive ? (isMobile ? 3 : 5) : 1,
+                        }}
+                        transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+                        className={`relative rounded-[2rem] overflow-hidden cursor-pointer flex flex-col border border-white/10 group`}
+                        style={{
+                           background: isActive ? item.bgImage : "rgba(20, 20, 20, 0.8)",
+                           backgroundColor: isActive ? "#0d0d0d" : "#0d0d0d",
+                        }}
+                     >
+                        {/* Dimmer overlay for inactive items */}
+                        <div className={`absolute inset-0 bg-black/50 transition-opacity duration-700 ${isActive ? 'opacity-0' : 'opacity-100 group-hover:opacity-60'}`} />
+                        
+                        <div className={`absolute inset-0 p-6 md:p-8 flex flex-col h-full w-full justify-end z-10 ${!isActive && !isMobile ? 'items-center pb-12' : 'items-start'}`}>
+                           
+                           {/* Icon & Title */}
+                           <div className={`flex ${!isActive && !isMobile ? 'flex-col items-center gap-8' : 'flex-row md:flex-col items-center md:items-start gap-4'} mb-2`}>
+                              
+                              <motion.div 
+                                 className="p-3 md:p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl shrink-0"
+                                 animate={{ 
+                                    color: isActive ? item.color : '#555555',
+                                    scale: isActive ? 1 : 0.85
+                                 }}
+                                 transition={{ duration: 0.5 }}
+                              >
+                                 {item.icon}
+                              </motion.div>
+                              
+                              <h3 
+                                 className="text-2xl md:text-4xl font-clash font-bold tracking-tight uppercase opacity-90 transition-colors duration-500"
+                                 style={{
+                                    writingMode: (!isActive && !isMobile) ? 'vertical-rl' : 'horizontal-tb',
+                                    transform: (!isActive && !isMobile) ? 'rotate(180deg)' : 'none',
+                                    whiteSpace: 'nowrap',
+                                    color: isActive ? '#fff' : '#888'
+                                 }}
+                              >
+                                 {item.title}
+                              </h3>
 
-               {/* Box 1: Spotify Green (Music) - Span 3 */}
-               <ScrollRevealedBox delay={0.1} className="col-span-1 md:col-span-3 bg-[#1DB954] p-6 md:p-10 min-h-[40vh] md:min-h-[50vh] flex flex-col justify-between text-black">
-                  <div className="flex justify-between items-start z-10">
-                     <h3 className="text-lg md:text-2xl font-bold font-clash uppercase tracking-tight flex items-center gap-2">
-                        Coding with soundtracks on loop <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                     </h3>
-                  </div>
+                           </div>
 
-                  {/* Middle Content */}
-                  <div className="flex flex-col gap-2 z-10 my-6">
-                     <div className="flex items-center gap-3">
-                        <span className="w-1.5 h-1.5 bg-black rounded-full" />
-                        <span className="text-sm md:text-lg font-sora font-medium opacity-90">Lo-fi to build, synthwave to ship</span>
-                     </div>
-                     <div className="flex items-center gap-3">
-                        <span className="w-1.5 h-1.5 bg-black rounded-full" />
-                        <span className="text-sm md:text-lg font-sora font-medium opacity-90">Music fuels my flow state</span>
-                     </div>
-                  </div>
-
-                  {/* Hover Visual: Mock Player / Artists */}
-                  <div className="absolute right-[-100px] top-1/2 -translate-y-1/2 translate-x-[50px] group-hover:translate-x-[-140px] md:group-hover:translate-x-[-180px] transition-transform duration-500 ease-out z-0 opacity-0 group-hover:opacity-100 pointer-events-none">
-                     <div className="bg-black/80 backdrop-blur-md text-white p-4 rounded-xl w-[180px] rotate-6 group-hover:rotate-12 transition-transform duration-700 shadow-xl border border-white/10">
-                        <div className="flex items-center gap-2 mb-3 border-b border-white/20 pb-2">
-                           <div className="w-2 h-2 bg-[#1DB954] rounded-full animate-pulse" />
-                           <span className="text-[10px] font-bold uppercase tracking-widest">On Repeat</span>
+                           {/* Description Details (only visible when active) */}
+                           <AnimatePresence>
+                              {isActive && (
+                                 <motion.div
+                                    initial={{ opacity: 0, height: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, height: 'auto', scale: 1 }}
+                                    exit={{ opacity: 0, height: 0, scale: 0.95 }}
+                                    transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                                    className="overflow-hidden w-full max-w-xl mt-4"
+                                 >
+                                    <h4 
+                                       className="text-lg md:text-2xl font-sora font-semibold mb-3 tracking-wide"
+                                       style={{ color: item.color }}
+                                    >
+                                       {item.subtitle}
+                                    </h4>
+                                    <p className="font-sora text-sm md:text-base text-neutral-400 leading-relaxed font-light">
+                                       {item.description}
+                                    </p>
+                                 </motion.div>
+                              )}
+                           </AnimatePresence>
                         </div>
-                        <div className="flex flex-col gap-2">
-                           {['Hans Zimmer', 'Daft Punk', 'Odesza'].map((artist, i) => (
-                              <div key={i} className="flex items-center gap-2">
-                                 <div className="w-6 h-6 bg-neutral-700 rounded-full flex items-center justify-center text-[8px]">🎵</div>
-                                 <span className="text-xs font-medium">{artist}</span>
-                              </div>
-                           ))}
-                        </div>
-                     </div>
-                  </div>
 
-                  {/* Decorative background element */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl pointer-events-none" />
-
-                  <div className="flex items-center gap-4 z-10">
-                     <div className="w-10 h-10 md:w-14 md:h-14 bg-black text-[#1DB954] flex items-center justify-center rounded-full font-bold text-xl md:text-2xl group-hover:scale-110 transition-transform duration-300">
-                        <Music size={24} />
-                     </div>
-                     <span className="text-4xl md:text-6xl font-bold font-clash tracking-tight group-hover:tracking-normal transition-all duration-300">Loves music.</span>
-                  </div>
-               </ScrollRevealedBox>
-
-               {/* Box 2: Orange (Weekend Chef) - Span 3 */}
-               <ScrollRevealedBox delay={0.2} className="col-span-1 md:col-span-3 bg-[#FF9F0A] p-6 md:p-10 min-h-[40vh] md:min-h-[50vh] flex flex-col justify-between text-black">
-                  <div className="z-10">
-                     <h3 className="text-lg md:text-2xl font-bold font-clash uppercase tracking-tight flex items-center gap-2 mb-4">
-                        Debugging life with recipes <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                     </h3>
-
-                     <div className="flex flex-col gap-2 opacity-90">
-                        <span className="text-sm md:text-lg font-sora font-medium flex items-center gap-3">
-                           <span className="w-1.5 h-1.5 bg-black rounded-full" /> Code by day, cook by night
-                        </span>
-                        <span className="text-sm md:text-lg font-sora font-medium flex items-center gap-3">
-                           <span className="w-1.5 h-1.5 bg-black rounded-full" /> Building flavors like systems
-                        </span>
-                     </div>
-                  </div>
-
-                  {/* Background Decoration */}
-                  <div className="absolute -right-8 top-1/2 -translate-y-1/2 opacity-10 rotate-12 group-hover:rotate-0 group-hover:opacity-20 transition-all duration-700 pointer-events-none">
-                     <ChefHat size={180} />
-                  </div>
-
-                  <div className="flex items-center gap-3 z-10 mt-8 md:mt-auto">
-                     <div className="bg-black text-[#FF9F0A] p-2 md:p-3 rounded-lg group-hover:rotate-12 transition-transform duration-300">
-                        <ChefHat className="w-6 h-6 md:w-8 md:h-8" />
-                     </div>
-                     <span className="text-4xl md:text-6xl font-bold font-clash tracking-tight group-hover:tracking-normal transition-all duration-300">Weekend Chef.</span>
-                  </div>
-               </ScrollRevealedBox>
-
-               {/* Box 3: Purple (AI Experiments) - Span 2 */}
-               <ScrollRevealedBox delay={0.3} className="col-span-1 md:col-span-2 bg-[#7C3AED] p-6 md:p-8 min-h-[40vh] md:min-h-[50vh] flex flex-col justify-between text-white">
-                  <div className="flex justify-between items-start z-10">
-                     <h3 className="text-lg md:text-xl font-bold font-clash uppercase tracking-tight flex items-center gap-2">
-                        AI Experiments <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                     </h3>
-                  </div>
-
-                  {/* Middle Content - Text Ideas */}
-                  <div className="flex flex-col gap-2 z-10 my-4 opacity-90">
-                     <span className="text-xs md:text-sm font-sora font-medium flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-white rounded-full shrink-0" /> Breaking models for fun
-                     </span>
-                     <span className="text-xs md:text-sm font-sora font-medium flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-white rounded-full shrink-0" /> Weird AI tools at 2AM
-                     </span>
-                     <span className="text-xs md:text-sm font-sora font-medium flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-white rounded-full shrink-0" /> Curiosity into code
-                     </span>
-                  </div>
-
-                  {/* Background Decoration */}
-                  <div className="absolute -right-10 top-1/2 -translate-y-1/2 opacity-10 rotate-12 group-hover:rotate-0 group-hover:opacity-20 transition-all duration-700 pointer-events-none">
-                     <Bot size={250} />
-                  </div>
-
-                  <div className="flex items-center gap-3 z-10 mt-8 md:mt-auto">
-                     <div className="bg-white rounded-lg p-2 group-hover:-rotate-12 transition-transform duration-300 text-[#7C3AED]">
-                        <Bot size={24} />
-                     </div>
-                     <span className="text-2xl md:text-3xl font-bold font-clash tracking-tight group-hover:tracking-normal transition-all duration-300">AI Tinkerer.</span>
-                  </div>
-               </ScrollRevealedBox>
-
-               {/* Box 4: Cyan (Curiosity Driven) - Span 2 */}
-               <ScrollRevealedBox delay={0.4} className="col-span-1 md:col-span-2 bg-[#06B6D4] p-6 md:p-8 min-h-[40vh] md:min-h-[50vh] flex flex-col justify-between text-black">
-                  <div className="z-10">
-                     <h3 className="text-lg md:text-xl font-bold font-clash uppercase tracking-tight flex items-center gap-2 mb-4">
-                        Always exploring what’s next <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                     </h3>
-
-                     <div className="flex flex-col gap-2 opacity-90">
-                        <span className="text-xs md:text-sm font-sora font-medium flex items-center gap-2">
-                           <span className="w-1.5 h-1.5 bg-black rounded-full" /> Learning fast, building faster
-                        </span>
-                        <span className="text-xs md:text-sm font-sora font-medium flex items-center gap-2">
-                           <span className="w-1.5 h-1.5 bg-black rounded-full" /> Obsessed with the future
-                        </span>
-                     </div>
-                  </div>
-
-                  {/* Background Decoration */}
-                  <div className="absolute -right-8 top-1/2 -translate-y-1/2 opacity-10 rotate-12 group-hover:rotate-0 group-hover:opacity-20 transition-all duration-700 pointer-events-none">
-                     <Rocket size={180} />
-                  </div>
-
-                  <div className="flex items-center gap-3 z-10 mt-8 md:mt-auto">
-                     <div className="bg-black text-[#06B6D4] p-2 rounded-lg group-hover:-rotate-12 transition-transform duration-300">
-                        <Rocket size={24} />
-                     </div>
-                     <span className="text-2xl md:text-3xl font-bold font-clash tracking-tight group-hover:tracking-normal transition-all duration-300">Curiosity Driven.</span>
-                  </div>
-               </ScrollRevealedBox>
-
-               {/* Box 5: Indigo (AI Builder) - Span 2 */}
-               <ScrollRevealedBox delay={0.5} className="col-span-1 md:col-span-2 bg-[#4F46E5] p-6 md:p-8 min-h-[40vh] md:min-h-[50vh] flex flex-col justify-between text-white">
-                  <div className="z-10">
-                     <h3 className="text-lg md:text-xl font-bold font-clash uppercase tracking-tight flex items-center gap-2 mb-4">
-                        AI Tools Playground <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                     </h3>
-
-                     <div className="flex flex-col gap-2 opacity-90">
-                        <span className="text-xs md:text-sm font-sora font-medium flex items-center gap-2">
-                           <span className="w-1.5 h-1.5 bg-white rounded-full" /> Playing with models
-                        </span>
-                        <span className="text-xs md:text-sm font-sora font-medium flex items-center gap-2">
-                           <span className="w-1.5 h-1.5 bg-white rounded-full" /> Building cool stuff
-                        </span>
-                     </div>
-                  </div>
-
-                  {/* Background Decoration */}
-                  <div className="absolute -right-8 top-1/2 -translate-y-1/2 opacity-10 rotate-12 group-hover:rotate-0 group-hover:opacity-20 transition-all duration-700 pointer-events-none">
-                     <Terminal size={180} />
-                  </div>
-
-                  <div className="flex items-center gap-3 z-10 mt-8 md:mt-auto">
-                     <div className="bg-white text-[#4F46E5] p-2 rounded-lg group-hover:rotate-12 transition-transform duration-300">
-                        <Terminal size={24} />
-                     </div>
-                     <span className="text-2xl md:text-3xl font-bold font-clash tracking-tight group-hover:tracking-normal transition-all duration-300">AI Builder.</span>
-                  </div>
-               </ScrollRevealedBox>
-
+                        {/* Large Background Decorative Icon */}
+                        <AnimatePresence>
+                           {isActive && !isMobile && (
+                              <motion.div
+                                 initial={{ scale: 0.5, opacity: 0, rotate: -20, x: 50 }}
+                                 animate={{ scale: 1, opacity: 0.08, rotate: 0, x: 0 }}
+                                 exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                                 transition={{ duration: 0.8, ease: "easeOut" }}
+                                 className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none"
+                                 style={{ color: item.color }}
+                              >
+                                 {React.cloneElement(item.icon as React.ReactElement, { size: 400 })}
+                              </motion.div>
+                           )}
+                        </AnimatePresence>
+                     </motion.div>
+                  );
+               })}
             </div>
          </div>
       </section>

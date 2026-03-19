@@ -9,7 +9,6 @@ import Contact from './components/Contact';
 import AIAssistant from './components/AIAssistant';
 import SuperBadassMarquee from './components/SuperBadassMarquee';
 import Freebies from './components/Freebies';
-import TerminalSkills from './components/TerminalSkills';
 import Preloader from './components/Preloader';
 import Noise from './components/Noise';
 import ProjectDetail from './components/ProjectDetail';
@@ -109,7 +108,6 @@ const App: React.FC = () => {
                 <About />
                 <SuperBadassMarquee />
                 <SelectedWork onProjectSelect={setSelectedProject} />
-                <TerminalSkills />
                 <Freebies />
                 <ThankYou />
                 <Contact />

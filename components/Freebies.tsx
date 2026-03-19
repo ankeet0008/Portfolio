@@ -9,8 +9,8 @@ const interests = [
     subtitle: "Advancing AI capabilities",
     description: "Passionate about building and deploying intelligent systems that solve complex, real-world problems.",
     icon: <BrainCircuit size={32} />,
-    color: "#1DB954",
-    bgImage: "radial-gradient(circle at 60% 50%, rgba(29, 185, 84, 0.15) 0%, rgba(0,0,0,0) 60%)"
+    color: "#FFFFFF",
+    bgImage: "radial-gradient(circle at 60% 50%, rgba(255, 255, 255, 0.08) 0%, rgba(0,0,0,0) 60%)"
   },
   {
     id: 2,
@@ -18,8 +18,8 @@ const interests = [
     subtitle: "Designing scalable infrastructure",
     description: "Architecting robust and efficient backend systems to support high-performance applications and data pipelines.",
     icon: <Network size={32} />,
-    color: "#FF9F0A",
-    bgImage: "radial-gradient(circle at 60% 50%, rgba(255, 159, 10, 0.15) 0%, rgba(0,0,0,0) 60%)"
+    color: "#E5E5E5",
+    bgImage: "radial-gradient(circle at 60% 50%, rgba(229, 229, 229, 0.06) 0%, rgba(0,0,0,0) 60%)"
   },
   {
     id: 3,
@@ -27,8 +27,8 @@ const interests = [
     subtitle: "Contributing to the ecosystem",
     description: "Actively engaging with the open-source community, sharing code, and collaborating on innovative developer tools.",
     icon: <Terminal size={32} />,
-    color: "#7C3AED",
-    bgImage: "radial-gradient(circle at 60% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(0,0,0,0) 60%)"
+    color: "#CCCCCC",
+    bgImage: "radial-gradient(circle at 60% 50%, rgba(204, 204, 204, 0.05) 0%, rgba(0,0,0,0) 60%)"
   },
   {
     id: 4,
@@ -36,8 +36,8 @@ const interests = [
     subtitle: "Fostering knowledge sharing",
     description: "Dedicated to mentoring peers, sharing technical insights, and continuously learning within the engineering community.",
     icon: <Users size={32} />,
-    color: "#06B6D4",
-    bgImage: "radial-gradient(circle at 60% 50%, rgba(6, 182, 212, 0.15) 0%, rgba(0,0,0,0) 60%)"
+    color: "#B3B3B3",
+    bgImage: "radial-gradient(circle at 60% 50%, rgba(179, 179, 179, 0.04) 0%, rgba(0,0,0,0) 60%)"
   }
 ];
 
@@ -74,7 +74,7 @@ const Freebies: React.FC = () => {
                      <div key={setIndex} className="flex shrink-0 items-center justify-around min-w-full">
                         {[...Array(4)].map((_, i) => (
                            <span key={i} className="text-6xl md:text-9xl font-black font-clash uppercase tracking-tighter text-white/90 px-12 flex items-center gap-8">
-                              PASSIONS <Zap className="w-12 h-12 md:w-20 md:h-20 text-yellow-400" />
+                              PASSIONS <Zap className="w-12 h-12 md:w-20 md:h-20 text-neutral-400" />
                            </span>
                         ))}
                      </div>

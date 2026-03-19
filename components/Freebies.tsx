@@ -1,6 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { BrainCircuit, Network, Terminal, Users, Zap } from 'lucide-react';
+import { BrainCircuit, Network, Terminal, Users, Zap, Code } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const interests = [
   {
@@ -38,11 +42,21 @@ const interests = [
     icon: <Users size={32} />,
     color: "#B3B3B3",
     bgImage: "radial-gradient(circle at 60% 50%, rgba(179, 179, 179, 0.04) 0%, rgba(0,0,0,0) 60%)"
+  },
+  {
+    id: 5,
+    title: "UI/UX & Web Dev",
+    subtitle: "Crafting digital experiences",
+    description: "I am passionate about UI/UX and webdev, turning creative concepts into beautiful, interactive, and user-centric web applications.",
+    icon: <Code size={32} />,
+    color: "#A3A3A3",
+    bgImage: "radial-gradient(circle at 60% 50%, rgba(163, 163, 163, 0.04) 0%, rgba(0,0,0,0) 60%)"
   }
 ];
 
 const Freebies: React.FC = () => {
    const containerRef = useRef<HTMLElement>(null);
+   const boxesRef = useRef<(HTMLDivElement | null)[]>([]);
    const [activeItem, setActiveItem] = useState<number>(1);
    const [isMobile, setIsMobile] = useState(false);
 
@@ -51,6 +65,30 @@ const Freebies: React.FC = () => {
       checkMobile();
       window.addEventListener('resize', checkMobile);
       return () => window.removeEventListener('resize', checkMobile);
+   }, []);
+
+   useEffect(() => {
+      const ctx = gsap.context(() => {
+         // Staggered entrance animation for all boxes
+         if (boxesRef.current.length > 0) {
+            gsap.fromTo(boxesRef.current, 
+               { opacity: 0, y: 80 },
+               {
+                  opacity: 1, 
+                  y: 0, 
+                  duration: 0.8, 
+                  stagger: 0.1, 
+                  ease: "power3.out",
+                  scrollTrigger: {
+                     trigger: containerRef.current,
+                     start: "top 60%",
+                     toggleActions: "play none none reverse"
+                  }
+               }
+            );
+         }
+      }, containerRef);
+      return () => ctx.revert();
    }, []);
 
    return (
@@ -86,12 +124,13 @@ const Freebies: React.FC = () => {
          {/* Accordion Container */}
          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-8 mt-16 md:mt-24">
             <div className="flex flex-col md:flex-row gap-4 h-[75vh] md:h-[65vh]">
-               {interests.map((item) => {
+               {interests.map((item, index) => {
                   const isActive = activeItem === item.id;
                   
                   return (
                      <motion.div
                         key={item.id}
+                        ref={(el) => { boxesRef.current[index] = el; }}
                         onMouseEnter={() => !isMobile && setActiveItem(item.id)}
                         onClick={() => isMobile && setActiveItem(item.id)}
                         animate={{

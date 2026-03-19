@@ -61,25 +61,9 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onNavigateContact }) => {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="w-full h-[60vh] bg-[#1f2937]/5 rounded-2xl overflow-hidden relative border border-[#1f2937]/10"
+              className="w-full h-[60vh] bg-[#e4e7ec] rounded-2xl overflow-hidden relative"
             >
-              {/* Profile Image (Background layer) */}
-              <img 
-                src="/about-me.png" 
-                alt="Ankit Naik" 
-                className="absolute inset-0 w-full h-full object-cover grayscale opacity-40 mix-blend-overlay"
-              />
-
-              {/* Status Overlays (Top layer) */}
-              <div className="absolute inset-0 z-10 p-8 flex flex-col justify-between pointer-events-none">
-                 <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-[#1f2937]/40 font-mono">NEURAL_SIGNATURE_CONNECTED.LOG</span>
-                 <div className="w-16 h-1 bg-[#BFA18F]/40 rounded-full" />
-              </div>
-
-              {/* Interactive Neural Network (Middle layer) */}
-              <div className="absolute inset-0 z-0">
-                <NeuralNetwork />
-              </div>
+              <img src="/about-me.png" alt="Profile" className="w-full h-full object-cover grayscale transition-all duration-500 ease-in-out hover:grayscale-0" />
             </motion.div>
 
             <div className="mt-8 flex justify-between items-end border-t border-[#d1d5db] pt-6">

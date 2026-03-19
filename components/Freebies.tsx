@@ -13,8 +13,8 @@ const interests = [
     subtitle: "Advancing AI capabilities",
     description: "Passionate about building and deploying intelligent systems that solve complex, real-world problems.",
     icon: <BrainCircuit size={32} />,
-    color: "#FFFFFF",
-    bgImage: "radial-gradient(circle at 60% 50%, rgba(255, 255, 255, 0.08) 0%, rgba(0,0,0,0) 60%)"
+    color: "#1DB954",
+    bgImage: "radial-gradient(circle at 60% 50%, rgba(29, 185, 84, 0.15) 0%, rgba(0,0,0,0) 60%)"
   },
   {
     id: 2,
@@ -22,8 +22,8 @@ const interests = [
     subtitle: "Designing scalable infrastructure",
     description: "Architecting robust and efficient backend systems to support high-performance applications and data pipelines.",
     icon: <Network size={32} />,
-    color: "#E5E5E5",
-    bgImage: "radial-gradient(circle at 60% 50%, rgba(229, 229, 229, 0.06) 0%, rgba(0,0,0,0) 60%)"
+    color: "#FF9F0A",
+    bgImage: "radial-gradient(circle at 60% 50%, rgba(255, 159, 10, 0.15) 0%, rgba(0,0,0,0) 60%)"
   },
   {
     id: 3,
@@ -31,8 +31,8 @@ const interests = [
     subtitle: "Contributing to the ecosystem",
     description: "Actively engaging with the open-source community, sharing code, and collaborating on innovative developer tools.",
     icon: <Terminal size={32} />,
-    color: "#CCCCCC",
-    bgImage: "radial-gradient(circle at 60% 50%, rgba(204, 204, 204, 0.05) 0%, rgba(0,0,0,0) 60%)"
+    color: "#7C3AED",
+    bgImage: "radial-gradient(circle at 60% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(0,0,0,0) 60%)"
   },
   {
     id: 4,
@@ -40,8 +40,8 @@ const interests = [
     subtitle: "Fostering knowledge sharing",
     description: "Dedicated to mentoring peers, sharing technical insights, and continuously learning within the engineering community.",
     icon: <Users size={32} />,
-    color: "#B3B3B3",
-    bgImage: "radial-gradient(circle at 60% 50%, rgba(179, 179, 179, 0.04) 0%, rgba(0,0,0,0) 60%)"
+    color: "#06B6D4",
+    bgImage: "radial-gradient(circle at 60% 50%, rgba(6, 182, 212, 0.15) 0%, rgba(0,0,0,0) 60%)"
   },
   {
     id: 5,
@@ -49,8 +49,8 @@ const interests = [
     subtitle: "Crafting digital experiences",
     description: "I am passionate about UI/UX and webdev, turning creative concepts into beautiful, interactive, and user-centric web applications.",
     icon: <Code size={32} />,
-    color: "#A3A3A3",
-    bgImage: "radial-gradient(circle at 60% 50%, rgba(163, 163, 163, 0.04) 0%, rgba(0,0,0,0) 60%)"
+    color: "#F43F5E",
+    bgImage: "radial-gradient(circle at 60% 50%, rgba(244, 63, 94, 0.15) 0%, rgba(0,0,0,0) 60%)"
   }
 ];
 

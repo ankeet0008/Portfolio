@@ -117,7 +117,7 @@ const Hero: React.FC = () => {
             ref={marqueeRef}
             className="flex whitespace-nowrap"
             style={{
-              opacity: 0.6,
+              opacity: 1,
               willChange: 'transform',
             }}
           >

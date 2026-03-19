@@ -1,41 +1,41 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Music, Bot, ChefHat, Rocket, Zap } from 'lucide-react';
+import { BrainCircuit, Network, Terminal, Users, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const interests = [
   {
     id: 1,
-    title: "Soundscapes",
-    subtitle: "Coding with soundtracks on loop",
-    description: "Lo-fi to build, synthwave to ship. Music is the fuel for my flow state.",
-    icon: <Music size={32} />,
+    title: "Machine Learning",
+    subtitle: "Advancing AI capabilities",
+    description: "Passionate about building and deploying intelligent systems that solve complex, real-world problems.",
+    icon: <BrainCircuit size={32} />,
     color: "#1DB954",
     bgImage: "radial-gradient(circle at 60% 50%, rgba(29, 185, 84, 0.15) 0%, rgba(0,0,0,0) 60%)"
   },
   {
     id: 2,
-    title: "Culinary Arts",
-    subtitle: "Debugging life with recipes",
-    description: "Code by day, cook by night. Building complex flavor profiles just like crafting scalable systems.",
-    icon: <ChefHat size={32} />,
+    title: "System Architecture",
+    subtitle: "Designing scalable infrastructure",
+    description: "Architecting robust and efficient backend systems to support high-performance applications and data pipelines.",
+    icon: <Network size={32} />,
     color: "#FF9F0A",
     bgImage: "radial-gradient(circle at 60% 50%, rgba(255, 159, 10, 0.15) 0%, rgba(0,0,0,0) 60%)"
   },
   {
     id: 3,
-    title: "AI & Innovation",
-    subtitle: "Tinkering beyond limits",
-    description: "Breaking models for fun, exploring weird AI tools at 2AM, and turning curiosity into code.",
-    icon: <Bot size={32} />,
+    title: "Open Source",
+    subtitle: "Contributing to the ecosystem",
+    description: "Actively engaging with the open-source community, sharing code, and collaborating on innovative developer tools.",
+    icon: <Terminal size={32} />,
     color: "#7C3AED",
     bgImage: "radial-gradient(circle at 60% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(0,0,0,0) 60%)"
   },
   {
     id: 4,
-    title: "Future Tech",
-    subtitle: "Obsessed with what's next",
-    description: "Learning incredibly fast, building even faster. Constantly exploring the bleeding edge of the web.",
-    icon: <Rocket size={32} />,
+    title: "Tech Leadership",
+    subtitle: "Fostering knowledge sharing",
+    description: "Dedicated to mentoring peers, sharing technical insights, and continuously learning within the engineering community.",
+    icon: <Users size={32} />,
     color: "#06B6D4",
     bgImage: "radial-gradient(circle at 60% 50%, rgba(6, 182, 212, 0.15) 0%, rgba(0,0,0,0) 60%)"
   }

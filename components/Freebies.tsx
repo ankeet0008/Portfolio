@@ -139,8 +139,7 @@ const Freebies: React.FC = () => {
                         transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
                         className={`relative rounded-[2rem] overflow-hidden cursor-pointer flex flex-col border border-white/10 group`}
                         style={{
-                           background: isActive ? item.bgImage : "rgba(20, 20, 20, 0.8)",
-                           backgroundColor: isActive ? "#0d0d0d" : "#0d0d0d",
+                           backgroundColor: isActive ? item.color : "rgba(20, 20, 20, 0.8)",
                         }}
                      >
                         {/* Dimmer overlay for inactive items */}
@@ -152,9 +151,9 @@ const Freebies: React.FC = () => {
                            <div className={`flex ${!isActive && !isMobile ? 'flex-col items-center gap-8' : 'flex-row md:flex-col items-center md:items-start gap-4'} mb-2`}>
                               
                               <motion.div 
-                                 className="p-3 md:p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl shrink-0"
+                                 className="p-3 md:p-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl shrink-0"
                                  animate={{ 
-                                    color: isActive ? item.color : '#555555',
+                                    color: isActive ? "#FFFFFF" : '#555555',
                                     scale: isActive ? 1 : 0.85
                                  }}
                                  transition={{ duration: 0.5 }}
@@ -163,12 +162,12 @@ const Freebies: React.FC = () => {
                               </motion.div>
                               
                               <h3 
-                                 className="text-2xl md:text-4xl font-clash font-bold tracking-tight uppercase opacity-90 transition-colors duration-500"
+                                 className="text-2xl md:text-4xl font-clash font-bold tracking-tight uppercase transition-colors duration-500"
                                  style={{
                                     writingMode: (!isActive && !isMobile) ? 'vertical-rl' : 'horizontal-tb',
                                     transform: (!isActive && !isMobile) ? 'rotate(180deg)' : 'none',
                                     whiteSpace: 'nowrap',
-                                    color: isActive ? '#fff' : '#888'
+                                    color: isActive ? '#FFFFFF' : '#888'
                                  }}
                               >
                                  {item.title}
@@ -187,12 +186,11 @@ const Freebies: React.FC = () => {
                                     className="overflow-hidden w-full max-w-xl mt-4"
                                  >
                                     <h4 
-                                       className="text-lg md:text-2xl font-sora font-semibold mb-3 tracking-wide"
-                                       style={{ color: item.color }}
+                                       className="text-lg md:text-2xl font-sora font-semibold mb-3 tracking-wide text-white"
                                     >
                                        {item.subtitle}
                                     </h4>
-                                    <p className="font-sora text-sm md:text-base text-neutral-400 leading-relaxed font-light">
+                                    <p className="font-sora text-sm md:text-base text-white/80 leading-relaxed font-light">
                                        {item.description}
                                     </p>
                                  </motion.div>
@@ -205,11 +203,11 @@ const Freebies: React.FC = () => {
                            {isActive && !isMobile && (
                               <motion.div
                                  initial={{ scale: 0.5, opacity: 0, rotate: -20, x: 50 }}
-                                 animate={{ scale: 1, opacity: 0.08, rotate: 0, x: 0 }}
+                                 animate={{ scale: 1, opacity: 0.15, rotate: 0, x: 0 }}
                                  exit={{ opacity: 0, transition: { duration: 0.2 } }}
                                  transition={{ duration: 0.8, ease: "easeOut" }}
                                  className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none"
-                                 style={{ color: item.color }}
+                                 style={{ color: '#FFFFFF' }}
                               >
                                  {React.cloneElement(item.icon as React.ReactElement, { size: 400 })}
                               </motion.div>

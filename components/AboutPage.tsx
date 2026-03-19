@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Code2, Cpu, Globe, ArrowUpRight } from 'lucide-react';
 import PageTransition from './PageTransition';
-import NeuralNetwork from './NeuralNetwork';
+import SplitTextReveal from './SplitTextReveal';
 
 interface AboutPageProps {
   onBack: () => void;
@@ -90,11 +90,26 @@ const AboutPage: React.FC<AboutPageProps> = ({ onBack, onNavigateContact }) => {
               viewport={{ once: true }}
             >
               <h3 className="text-xs font-sora font-bold uppercase tracking-[0.2em] text-[#9ca3af] mb-8">The Story</h3>
-              <p className="text-2xl md:text-4xl leading-relaxed font-light text-[#1f2937]">
-                I'm Ankit, a creative developer sitting at the intersection of <span className="font-serif italic text-[#BFA18F]">design</span> and <span className="font-serif italic text-[#BFA18F]">technology</span>.
-                <br /><br />
-                With a background in computer science and a passion for brutalist aesthetics, I build digital products that feel solid, performant, and distinctly human. I believe the web should be an extension of our creative minds, not just a utility.
-              </p>
+              <div className="text-2xl md:text-4xl leading-relaxed font-light text-[#1f2937]">
+                <SplitTextReveal 
+                  splitBy="char" 
+                  staggerDelay={0.015} 
+                  yOffset={20}
+                  className="inline"
+                >
+                  I'm Ankit, a creative developer sitting at the intersection of design and technology.
+                </SplitTextReveal>
+                <div className="h-8" />
+                <SplitTextReveal 
+                  splitBy="char" 
+                  staggerDelay={0.01} 
+                  yOffset={15}
+                  delay={0.5}
+                  className="inline"
+                >
+                  With a background in computer science and a passion for brutalist aesthetics, I build digital products that feel solid, performant, and distinctly human. I believe the web should be an extension of our creative minds, not just a utility.
+                </SplitTextReveal>
+              </div>
             </motion.div>
 
             {/* Services */}

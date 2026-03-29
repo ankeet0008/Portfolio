@@ -24,7 +24,7 @@ export const projects: Project[] = [
     title: "ChestXR",
     category: "AI Medical",
     year: "2024",
-    image: "/chestxrhero.png", // placeholder image name
+    image: "/chest-xr-image.png",
     description: "AI-Powered Chest X-Ray Classification with real-time analysis.",
     type: 'ml'
   },

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Project } from '../types';
 import { ArrowUpRight, LayoutTemplate } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -31,7 +31,15 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
         delay: index * 0.08,
         ease: [0.16, 1, 0.3, 1],
       }}
-      onClick={(e) => onClick(e, project)}
+      onClick={(e) => {
+        if (project.type === 'uiux') {
+          if (project.link) {
+            window.open(project.link, '_blank');
+          }
+        } else {
+          onClick(e, project);
+        }
+      }}
       className="group relative flex items-center justify-between py-10 px-6 border-b border-neutral-800 cursor-pointer overflow-hidden w-full"
     >
       {/* Hover Background Animation - Left to Right Wipe */}
@@ -58,8 +66,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
       {/* Right Content - Button Style */}
       <div className="relative z-10 flex items-center">
         <div className="px-5 py-2 border border-neutral-700 rounded text-[10px] font-bold uppercase tracking-widest text-neutral-400 group-hover:border-black group-hover:text-black transition-colors duration-300 flex items-center gap-3">
-          <span className="hidden md:inline">View Case Study</span>
-          <span className="md:hidden">View</span>
+          <span className="hidden md:inline">{project.type === 'uiux' ? 'Visit Website' : 'View Case Study'}</span>
+          <span className="md:hidden">{project.type === 'uiux' ? 'Visit' : 'View'}</span>
           <ArrowUpRight size={14} />
         </div>
       </div>
@@ -70,6 +78,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 
 const SelectedWork: React.FC<SelectedWorkProps> = ({ onProjectSelect }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [activeTab, setActiveTab] = useState<'ml' | 'uiux'>('ml');
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -115,7 +124,32 @@ const SelectedWork: React.FC<SelectedWorkProps> = ({ onProjectSelect }) => {
 
         {/* Scrollable Content */}
         <div className="px-6 md:px-12 pt-12 md:pt-20">
+          {/* Tab Switcher */}
+          <div className="flex gap-4 mb-12">
+            <button
+              onClick={() => setActiveTab('ml')}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+                activeTab === 'ml' 
+                  ? 'bg-white text-black' 
+                  : 'border border-neutral-700 text-neutral-400 hover:text-white'
+              }`}
+            >
+              ML Projects
+            </button>
+            <button
+              onClick={() => setActiveTab('uiux')}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+                activeTab === 'uiux' 
+                  ? 'bg-white text-black' 
+                  : 'border border-neutral-700 text-neutral-400 hover:text-white'
+              }`}
+            >
+              UI/UX Projects
+            </button>
+          </div>
+
           {/* Info Grid */}
+          {activeTab === 'ml' ? (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-24 w-full">
             {/* Timeframe */}
             <div className="flex flex-col gap-6">
@@ -156,10 +190,52 @@ const SelectedWork: React.FC<SelectedWorkProps> = ({ onProjectSelect }) => {
               </div>
             </div>
           </div>
+          ) : (
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-24 w-full">
+            {/* Timeframe */}
+            <div className="flex flex-col gap-6">
+              <span className="text-[10px] font-sora font-semibold uppercase tracking-[0.2em] text-neutral-500">Timeframe</span>
+              <span className="text-sm font-clash font-medium text-neutral-300">YEAR 2023-26</span>
+            </div>
+            {/* Discipline */}
+            <div className="flex flex-col gap-6">
+              <span className="text-[10px] font-sora font-semibold uppercase tracking-[0.2em] text-neutral-500">Discipline</span>
+              <div className="flex flex-col gap-1 text-sm font-clash font-medium text-neutral-300">
+                <span>UI/UX Design</span>
+                <span>Prototyping</span>
+                <span>Wireframing</span>
+                <span>User Research</span>
+                <span>Interaction Design</span>
+              </div>
+            </div>
+            {/* Tools */}
+            <div className="flex flex-col gap-6">
+              <span className="text-[10px] font-sora font-semibold uppercase tracking-[0.2em] text-neutral-500">Tools</span>
+              <div className="flex flex-col gap-1 text-sm font-clash font-medium text-neutral-300">
+                <span>Figma</span>
+                <span>Framer</span>
+                <span>Spline</span>
+                <span>Webflow</span>
+                <span>Adobe CC</span>
+              </div>
+            </div>
+            {/* Industry */}
+            <div className="flex flex-col gap-6">
+              <span className="text-[10px] font-sora font-semibold uppercase tracking-[0.2em] text-neutral-500">Industry</span>
+              <div className="flex flex-wrap gap-2">
+                {['#SAAS', '#ECOMMERCE', '#FINTECH', '#HEALTHCARE', '#WEB3'].map(tag => (
+                  <span key={tag} className="px-3 py-2 border border-neutral-800 rounded-lg text-[10px] font-bold uppercase tracking-wider text-neutral-400 hover:border-neutral-600 hover:text-white transition-colors cursor-default">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+          )}
 
           {/* Projects List - Full Width */}
           <div className="flex flex-col border-t border-neutral-800 w-full relative z-10">
-            {projects.map((project, index) => (
+            {projects.filter(p => p.type === activeTab).map((project, index) => (
               <ProjectItem
                 key={project.id}
                 project={project}

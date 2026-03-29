@@ -232,7 +232,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, isLoading = false, curtainS
                 { label: 'About', view: 'about', delay: 0.06 },
                 { label: 'Work', view: 'work', delay: 0.12 },
                 { label: 'Contact', view: 'contact', delay: 0.18 },
-                { label: 'Resume', href: '/AnkitNaikresume.pdf', delay: 0.24 },
+                { label: 'Resume', href: '/Ankitnaikresume.pdf', delay: 0.24 },
               ] as any[]
             ).map((item) => (
               <motion.div
@@ -291,7 +291,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, isLoading = false, curtainS
                 { label: 'About', view: 'about' },
                 { label: 'Work', view: 'work' },
                 { label: 'Contact', view: 'contact' },
-                { label: 'Resume', href: '/AnkitNaikresume.pdf' },
+                { label: 'Resume', href: '/Ankitnaikresume.pdf' },
               ] as any[]
             ).map((item, i) => (
               <motion.button

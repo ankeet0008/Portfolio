@@ -3,55 +3,46 @@ import { Project, ProjectDetails } from '../types';
 export const projects: Project[] = [
   {
     id: 1,
-    title: "LLM Council",
-    category: "Skill",
-    year: "2024",
-    image: "/LLMCouncilHero.png",
-    description: "Strategic AI integration and prompt engineering architectures."
-  },
-  {
-    id: 2,
     title: "Skill Twin",
     category: "AI Analysis",
     year: "2023",
     image: "/skilltwinhero.png",
-    description: "AI powered resume and industry skill gap analyser."
+    description: "AI powered resume and industry skill gap analyser.",
+    type: 'ml'
   },
   {
-    id: 3,
+    id: 2,
     title: "D-Liver",
     category: "AI Medical",
     year: "2024",
     image: "/dliverhero.png",
-    description: "Intelligent medical assistant platform to parse and explain medical reports."
+    description: "Intelligent medical assistant platform to parse and explain medical reports.",
+    type: 'ml'
+  },
+  {
+    id: 3,
+    title: "ChestXR",
+    category: "AI Medical",
+    year: "2024",
+    image: "/chestxrhero.png", // placeholder image name
+    description: "AI-Powered Chest X-Ray Classification with real-time analysis.",
+    type: 'ml'
   },
   {
     id: 4,
-    title: "Echo",
-    category: "Audio Stream",
-    year: "2022",
-    image: "/EchoHero.png",
-    description: "Spatial audio experience on the web."
-  },
+    title: "Sundargarh Heritage",
+    category: "Web Design",
+    year: "2024",
+    image: "/ecommerce.png", // keeping placeholder image unless told otherwise
+    description: "The Majestic West - Exploring Sundargarh Heritage.",
+    type: 'uiux',
+    link: "https://sundargarh.vercel.app/"
+  }
 ];
 
 export const getProjectDetails = (project: Project): ProjectDetails | null => {
   switch (project.id) {
     case 1:
-      return {
-        status: "Active Development",
-        statusColor: "blue",
-        descriptionPrefix: "I'm working on it.",
-        description: "Redefining how we interact with large language models through structured prompt engineering and intelligent context management.",
-        progressTitle: "Work in Progress",
-        progressSubtitle: "Building Core Systems",
-        techStack: ['OpenAI API', 'Next.js 14', 'Python', 'LangChain', 'Pinecone', 'Redis'],
-        features: ['Context-Aware Responses', 'Dynamic Prompt Chaining', 'Low Latency Inference'],
-        quote: "Bridging the gap between human intent and machine execution.",
-        ctaText: "Notify Launch",
-        ctaLink: null
-      };
-    case 2:
       return {
         status: "Open Source",
         statusColor: "green",
@@ -65,7 +56,7 @@ export const getProjectDetails = (project: Project): ProjectDetails | null => {
         ctaText: "View on GitHub",
         ctaLink: "https://github.com/ankeet0008/SwillTwin"
       };
-    case 3:
+    case 2:
       return {
         status: "Beta Testing",
         statusColor: "teal",
@@ -79,19 +70,33 @@ export const getProjectDetails = (project: Project): ProjectDetails | null => {
         ctaText: "Request Access",
         ctaLink: "#"
       };
+    case 3:
+      return {
+        status: "Live",
+        statusColor: "blue",
+        descriptionPrefix: "Diagnostic AI.",
+        description: "An AI-powered diagnostic tool that classifies chest X-rays with high accuracy, providing instant insights and confidence scores for medical imaging.",
+        progressTitle: "Public Beta",
+        progressSubtitle: "Live on Vercel",
+        techStack: ['FastAPI', 'PyTorch', 'React', 'Tailwind'],
+        features: ['Real-time Analysis', 'Confidence Scores', 'Image Preprocessing'],
+        quote: "Enhancing diagnostic accuracy through deep learning.",
+        ctaText: "Visit App",
+        ctaLink: "https://chest-x-ray-claiisfication.vercel.app/"
+      };
     case 4:
       return {
-        status: "Experimental",
-        statusColor: "indigo",
-        descriptionPrefix: "Visualizing Sound.",
-        description: "An immersive web experience that transforms audio input into real-time visual landscapes using WebGL and spatial audio algorithms.",
-        progressTitle: "Prototype",
-        progressSubtitle: "Interactive Demo",
-        techStack: ['Web Audio API', 'Canvas API', 'React', 'Typescript'],
-        features: ['Real-time Frequency Analysis', 'Spatial Audio', 'Interactive Visuals'],
-        quote: "Hearing with your eyes.",
-        ctaText: "Try Demo",
-        ctaLink: "#"
+        status: "Completed",
+        statusColor: "green",
+        descriptionPrefix: "Heritage & Culture.",
+        description: "A visually rich web platform dedicated to showcasing the majestic heritage and culture of Sundargarh. Features modern typography and smooth interactions.",
+        progressTitle: "Live",
+        progressSubtitle: "Available Online",
+        techStack: ['React', 'Web Design', 'Typography'],
+        features: ['Interactive UI', 'Cultural Showcase', 'Responsive Design'],
+        quote: "Bringing heritage to the digital forefront.",
+        ctaText: "Visit Website",
+        ctaLink: "https://sundargarh.vercel.app/"
       };
     default:
       return null;

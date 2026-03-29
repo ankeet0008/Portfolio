@@ -5,6 +5,8 @@ export interface Project {
   year: string;
   image: string;
   description: string;
+  type: 'ml' | 'uiux';
+  link?: string;
 }
 
 export interface ProjectDetails {

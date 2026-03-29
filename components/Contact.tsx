@@ -36,9 +36,10 @@ const Contact: React.FC = () => {
         whileInView={{ scale: 1, opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full border border-neutral-300 rounded-xl md:rounded-2xl py-12 md:py-20 flex justify-center items-center overflow-hidden mb-12 md:mb-24 group hover:bg-neutral-50 transition-colors duration-500 cursor-default"
+        className="w-full border border-neutral-300 rounded-xl md:rounded-2xl py-12 md:py-20 flex justify-center items-center overflow-hidden mb-12 md:mb-24 group transition-colors duration-500 cursor-default bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url("/sigbackground.jpg")', backgroundSize: 'cover' }}
       >
-        <h1 className="text-[15vw] md:text-[14vw] leading-none font-normal font-cursive text-center group-hover:scale-105 transition-transform duration-700 select-none">
+        <h1 className="text-[15vw] md:text-[14vw] leading-none font-normal font-cursive text-center group-hover:scale-105 transition-transform duration-700 select-none text-white">
           Ankit Naik
         </h1>
       </motion.div>

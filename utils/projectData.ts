@@ -30,11 +30,11 @@ export const projects: Project[] = [
   },
   {
     id: 4,
-    title: "Sundargarh Heritage",
+    title: "Odisha Heritage",
     category: "Web Design",
     year: "2024",
     image: "/ecommerce.png", // keeping placeholder image unless told otherwise
-    description: "The Majestic West - Exploring Sundargarh Heritage.",
+    description: "The Majestic West - Exploring Odisha Heritage.",
     type: 'uiux',
     link: "https://sundargarh.vercel.app/"
   }

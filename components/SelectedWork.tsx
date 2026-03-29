@@ -213,6 +213,7 @@ const SelectedWork: React.FC<SelectedWorkProps> = ({ onProjectSelect }) => {
               <span className="text-[10px] font-sora font-semibold uppercase tracking-[0.2em] text-neutral-500">Tools</span>
               <div className="flex flex-col gap-1 text-sm font-clash font-medium text-neutral-300">
                 <span>Figma</span>
+                <span>Stitch</span>
                 <span>Framer</span>
                 <span>Spline</span>
                 <span>Webflow</span>

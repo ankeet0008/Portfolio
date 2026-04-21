@@ -6,6 +6,8 @@ interface HeaderProps {
   onNavigate: (view: 'home' | 'about' | 'contact' | 'work') => void;
   isLoading?: boolean;
   curtainStarted?: boolean;
+  hideTagline?: boolean;
+  hideBrand?: boolean;
 }
 
 const SCROLL_THRESHOLD = 80;
@@ -133,7 +135,13 @@ const ScrambleNavLink: React.FC<ScrambleNavLinkProps> = ({ label, onClick }) => 
 };
 
 // ─── Header Component (Kraken-style) ─────────────────────────────────
-const Header: React.FC<HeaderProps> = ({ onNavigate, isLoading = false, curtainStarted = false }) => {
+const Header: React.FC<HeaderProps> = ({
+  onNavigate,
+  isLoading = false,
+  curtainStarted = false,
+  hideTagline = false,
+  hideBrand = false,
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const ticking = useRef(false);
@@ -170,59 +178,63 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, isLoading = false, curtainS
         <div className="w-full flex items-start justify-between px-6 md:px-10 pt-6 md:pt-8">
 
           {/* ── Left: Logo + Collapsing Name ── */}
-          <button
-            onClick={() => onNavigate('home')}
-            className="flex items-center pointer-events-auto group"
-            style={{
-              gap: scrolled ? '0px' : '12px',
-              transition: 'gap 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
-            }}
-          >
-            {/* Favicon — always visible */}
-            <motion.img
-              src="/anfavicon.png"
-              alt="AN"
-              className="flex-shrink-0 invert"
-              initial={{ opacity: 0, y: -20 }}
-              animate={showNav ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, delay: curtainStarted && isLoading ? 0.3 : 0, ease: [0.16, 1, 0.3, 1] }}
+          {!hideBrand && (
+            <button
+              onClick={() => onNavigate('home')}
+              className="flex items-center pointer-events-auto group"
               style={{
-                width: scrolled ? '34px' : '42px',
-                height: scrolled ? '34px' : '42px',
-                transition: 'width 0.5s cubic-bezier(0.16, 1, 0.3, 1), height 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
-                filter: 'invert(1)',
-              }}
-            />
-
-            {/* "Design by Ankit" — collapses on scroll */}
-            <div
-              style={{
-                overflow: 'hidden',
-                maxWidth: scrolled ? '0px' : '250px',
-                opacity: scrolled ? 0 : 1,
-                transition: 'max-width 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease',
+                gap: scrolled ? '0px' : '12px',
+                transition: 'gap 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
               }}
             >
-              <span className="font-clash font-semibold tracking-[0.15em] text-white uppercase flex items-center gap-[0.4em] whitespace-nowrap text-sm">
-                {['Design', 'by', 'Ankit'].map((word, i) => (
-                  <span key={word} className="overflow-hidden inline-flex">
-                    <motion.span
-                      initial={{ y: '-110%', opacity: 0 }}
-                      animate={showNav ? { y: '0%', opacity: 1 } : { y: '-110%', opacity: 0 }}
-                      transition={{
-                        duration: 0.5,
-                        delay: curtainStarted && isLoading ? 0.6 + i * 0.08 : i * 0.08,
-                        ease: [0.16, 1, 0.3, 1],
-                      }}
-                      className={word === 'Ankit' ? 'font-bold' : 'font-medium'}
-                    >
-                      {word}
-                    </motion.span>
+              {/* Favicon — always visible */}
+              <motion.img
+                src="/anfavicon.png"
+                alt="AN"
+                className="flex-shrink-0 invert"
+                initial={{ opacity: 0, y: -20 }}
+                animate={showNav ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, delay: curtainStarted && isLoading ? 0.3 : 0, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  width: scrolled ? '34px' : '42px',
+                  height: scrolled ? '34px' : '42px',
+                  transition: 'width 0.5s cubic-bezier(0.16, 1, 0.3, 1), height 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                  filter: 'invert(1)',
+                }}
+              />
+
+              {/* "Design by Ankit" — collapses on scroll */}
+              {!hideTagline && (
+                <div
+                  style={{
+                    overflow: 'hidden',
+                    maxWidth: scrolled ? '0px' : '250px',
+                    opacity: scrolled ? 0 : 1,
+                    transition: 'max-width 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease',
+                  }}
+                >
+                  <span className="font-clash font-semibold tracking-[0.15em] text-white uppercase flex items-center gap-[0.4em] whitespace-nowrap text-sm">
+                    {['Design', 'by', 'Ankit'].map((word, i) => (
+                      <span key={word} className="overflow-hidden inline-flex">
+                        <motion.span
+                          initial={{ y: '-110%', opacity: 0 }}
+                          animate={showNav ? { y: '0%', opacity: 1 } : { y: '-110%', opacity: 0 }}
+                          transition={{
+                            duration: 0.5,
+                            delay: curtainStarted && isLoading ? 0.6 + i * 0.08 : i * 0.08,
+                            ease: [0.16, 1, 0.3, 1],
+                          }}
+                          className={word === 'Ankit' ? 'font-bold' : 'font-medium'}
+                        >
+                          {word}
+                        </motion.span>
+                      </span>
+                    ))}
                   </span>
-                ))}
-              </span>
-            </div>
-          </button>
+                </div>
+              )}
+            </button>
+          )}
 
           {/* ── Right: Vertical Nav Links (Desktop) — Kraken-style ── */}
           <nav className="hidden md:flex flex-col items-end pointer-events-auto" style={{ gap: '0px' }}>

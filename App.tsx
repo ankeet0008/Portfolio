@@ -79,7 +79,13 @@ const App: React.FC = () => {
 
       <Noise />
 
-      <Header onNavigate={handleNavigate} isLoading={isLoading} curtainStarted={curtainStarted} />
+      <Header
+        onNavigate={handleNavigate}
+        isLoading={isLoading}
+        curtainStarted={curtainStarted}
+        hideTagline={Boolean(selectedProject)}
+        hideBrand={Boolean(selectedProject)}
+      />
 
       <AnimatePresence mode="wait">
         {selectedProject ? (

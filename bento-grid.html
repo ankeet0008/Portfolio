@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bento Grid Portfolio Section</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      :root {
+        --bg: #1a1a1a;
+        --yellow: #f5e642;
+        --orange: #e8622a;
+        --purple: #c9b8f5;
+        --cyan: #4de8d1;
+        --olive: #3d4a34;
+        --dark-card: #242424;
+        --gap: 12px;
+        --radius: 20px;
+        --shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: radial-gradient(circle at top, #2a2a2a 0%, #1a1a1a 55%, #151515 100%);
+        color: #f2f2f2;
+        font-family: "DM Sans", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px 16px;
+      }
+
+      .bento-section {
+        width: min(900px, 100%);
+      }
+
+      .bento-grid {
+        display: grid;
+        gap: var(--gap);
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+      }
+
+      .card {
+        border-radius: var(--radius);
+        padding: 18px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: transform 0.2s ease;
+      }
+
+      .card:hover {
+        transform: scale(1.02);
+      }
+
+      .cta {
+        background: var(--yellow);
+        color: #1a1a1a;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .cta h3 {
+        font-size: 18px;
+        line-height: 1.4;
+        margin: 0;
+        font-weight: 700;
+      }
+
+      .cta .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.12);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .cta .arrow {
+        position: absolute;
+        right: 16px;
+        bottom: 14px;
+        font-size: 18px;
+      }
+
+      .hero-image {
+        background: var(--dark-card);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .tools {
+        padding: 0;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        overflow: hidden;
+      }
+
+      .tools .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 16px;
+        gap: 12px;
+      }
+
+      .tools .top {
+        background: linear-gradient(135deg, #2ed3a0, #0ea47c);
+      }
+
+      .tools .bottom {
+        background: linear-gradient(135deg, #1d5cff, #2878ff);
+      }
+
+      .tools i {
+        font-size: 22px;
+        color: #ffffff;
+      }
+
+      .portrait {
+        background: var(--olive);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+      }
+
+      .portrait img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .bio {
+        background: var(--orange);
+        color: #1a1a1a;
+      }
+
+      .bio h4 {
+        margin: 0 0 10px 0;
+        font-size: 22px;
+        font-weight: 700;
+      }
+
+      .bio p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.6;
+        font-weight: 400;
+      }
+
+      .bio .arrow {
+        position: absolute;
+        right: 16px;
+        top: 14px;
+        font-size: 18px;
+      }
+
+      .work-preview {
+        background: var(--dark-card);
+        padding: 0;
+      }
+
+      .work-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .portfolio-grid {
+        background: var(--purple);
+        color: #1a1a1a;
+        display: grid;
+        gap: 10px;
+        padding: 16px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+      }
+
+      .portfolio-grid img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+
+      .toggle-card {
+        background: #ffffff;
+        color: #1a1a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .toggle {
+        width: 110px;
+        height: 56px;
+        border-radius: 999px;
+        background: #1f1f1f;
+        position: relative;
+      }
+
+      .toggle::after {
+        content: "";
+        position: absolute;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #ffffff;
+        left: 6px;
+        top: 6px;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+      }
+
+      .stats {
+        background: var(--cyan);
+        color: #1a1a1a;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .stats .arrow {
+        position: absolute;
+        right: 16px;
+        top: 14px;
+        font-size: 18px;
+      }
+
+      .stat {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .stat span {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, 0.6);
+      }
+
+      .stat strong {
+        font-size: 22px;
+        font-weight: 700;
+      }
+
+      @media (max-width: 860px) {
+        .bento-grid {
+          grid-template-columns: 1fr;
+          grid-template-rows: none;
+        }
+
+        .card {
+          min-height: 180px;
+        }
+
+        .tools {
+          grid-template-rows: 1fr 1fr;
+        }
+
+        .stats {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="bento-section">
+      <div class="bento-grid">
+        <article class="card cta">
+          <h3>Got an idea? Don't let it rest. Let's start working on it.</h3>
+          <span class="pill"><i class="fa-solid fa-copy"></i> Copy email</span>
+          <span class="arrow">↗</span>
+        </article>
+
+        <article class="card hero-image">
+          <img src="https://picsum.photos/seed/phone-mock/500/500" alt="Phone mockup" />
+        </article>
+
+        <article class="card tools">
+          <div class="row top">
+            <i class="fa-brands fa-xing"></i>
+            <i class="fa-regular fa-file-pdf"></i>
+            <i class="fa-brands fa-figma"></i>
+            <i class="fa-solid fa-briefcase"></i>
+            <i class="fa-brands fa-adobe"></i>
+          </div>
+          <div class="row bottom">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-linkedin"></i>
+            <i class="fa-brands fa-reddit-alien"></i>
+            <i class="fa-brands fa-dribbble"></i>
+            <i class="fa-brands fa-behance"></i>
+            <i class="fa-brands fa-pinterest"></i>
+          </div>
+        </article>
+
+        <article class="card portrait">
+          <img src="https://picsum.photos/seed/portrait/500/500" alt="Portrait" />
+        </article>
+
+        <article class="card bio">
+          <span class="arrow">↗</span>
+          <h4>Daniel Foster</h4>
+          <p>
+            A product designer crafting thoughtful digital experiences for modern
+            teams. Focused on clarity, accessibility, and delight in every
+            interface. Always exploring new ways to tell a story through design.
+          </p>
+        </article>
+
+        <article class="card work-preview">
+          <img src="https://picsum.photos/seed/work-screens/500/500" alt="Work preview" />
+        </article>
+
+        <article class="card portfolio-grid">
+          <img src="https://picsum.photos/seed/grid-1/200/200" alt="Portfolio item" />
+          <img src="https://picsum.photos/seed/grid-2/200/200" alt="Portfolio item" />
+          <img src="https://picsum.photos/seed/grid-3/200/200" alt="Portfolio item" />
+          <img src="https://picsum.photos/seed/grid-4/200/200" alt="Portfolio item" />
+        </article>
+
+        <article class="card toggle-card">
+          <div class="toggle" aria-hidden="true"></div>
+        </article>
+
+        <article class="card stats">
+          <span class="arrow">↗</span>
+          <div class="stat">
+            <span>Clients</span>
+            <strong>50+</strong>
+          </div>
+          <div class="stat">
+            <span>Xp</span>
+            <strong>7 yrs</strong>
+          </div>
+          <div class="stat">
+            <span>Featured</span>
+            <strong>08 works</strong>
+          </div>
+          <div class="stat">
+            <span>Projects</span>
+            <strong>120+</strong>
+          </div>
+        </article>
+      </div>
+    </section>
+  </body>
+</html>
